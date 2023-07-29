@@ -9,7 +9,7 @@
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        {{-- <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}"> --}}
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
         <!-- plugin css -->
         <link href="{{ asset('assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css" />
@@ -28,9 +28,34 @@
 
     <!-- body start -->
     <body class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
-        
-        @yield('content')
-        
+      <!-- Begin page -->
+            <div id="wrapper">
+                <!-- Topbar Start -->
+                <x-partials.top-bar />
+                <x-partials.left-side-bar />
+                <!-- Start Page Content here -->
+                <div class="content-page">
+                    <div class="content">
+
+                        <!-- Start Content-->
+                        <div class="container-fluid">
+                            
+                                @yield('content')
+
+                        </div> 
+                    </div> <!-- content -->
+
+                    <x-partials.footer />
+                
+                </div>
+                    <!-- End Page content -->
+            </div>
+                    <!-- END wrapper -->
+        <x-partials.right-side-bar />
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
         <!-- Vendor js -->
         <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 

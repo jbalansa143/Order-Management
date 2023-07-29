@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\admin\dashboard;
+namespace App\View\Components\Admin\Menu;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class RightSideBar extends Component
+class MenuWidget extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class RightSideBar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.partials.right-side-bar');
+        return view('components.admin.menu.menu-widget');
     }
 }

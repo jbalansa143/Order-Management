@@ -21,6 +21,6 @@ class TopBar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.dashboard.top-bar');
+        return view('components.partials.top-bar');
     }
 }

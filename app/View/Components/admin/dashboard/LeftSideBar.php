@@ -21,6 +21,6 @@ class LeftSideBar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.dashboard.left-side-bar');
+        return view('components.partials.left-side-bar');
     }
 }

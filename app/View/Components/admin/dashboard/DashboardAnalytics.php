@@ -21,6 +21,6 @@ class DashboardAnalytics extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard.dashboard-analytics');
+        return view('components.admin.dashboard.dashboard-analytics');
     }
 }

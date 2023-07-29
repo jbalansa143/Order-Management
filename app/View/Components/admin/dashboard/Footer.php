@@ -21,6 +21,6 @@ class Footer extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.dashboard.footer');
+        return view('components.partials.footer');
     }
 }
