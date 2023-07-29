@@ -57,7 +57,7 @@
                         </div> 
 
                     </div> 
-                    <x-partials.footer />        
+                    {{-- <x-partials.footer /> --}}
                 </div>
                     <!-- End Page content -->
             </div>
