@@ -20,7 +20,9 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        
+
+        return view('components.admin.menu.create');
     }
 
     /**

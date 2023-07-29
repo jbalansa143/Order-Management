@@ -361,7 +361,7 @@
                 </a>
                 <div class="dropdown-menu">
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
+                    <a href="{{ route('menu.create') }}" class="dropdown-item">
                         <i class="fe-briefcase me-1"></i>
                         <span>Menu</span>
                     </a>

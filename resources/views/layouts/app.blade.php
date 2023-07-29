@@ -24,10 +24,18 @@
         <!-- icons -->
         <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
+        {{-- Datatables --}}
         <!-- third party css -->
         <link href="{{ asset('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- third party css end -->
+
+        {{-- Drag and drop --}}
+        <!-- Plugins css-->
+        <link href="{{ asset('assets/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/libs/dropzone/min/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/libs/quill/quill.core.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/libs/quill/quill.snow.css') }}" rel="stylesheet" type="text/css" />
     </head>
 
     <!-- body start -->
@@ -37,20 +45,19 @@
                 <!-- Topbar Start -->
                 <x-partials.top-bar />
                 <x-partials.left-side-bar />
+
                 <!-- Start Page Content here -->
                 <div class="content-page">
                     <div class="content">
 
                         <!-- Start Content-->
-                        <div class="container-fluid">
-                            
+                        <div class="container-fluid">                 
+                            <x-admin.dashboard.page-title />
                                 @yield('content')
-
                         </div> 
-                    </div> <!-- content -->
 
-                    <x-partials.footer />
-                
+                    </div> 
+                    <x-partials.footer />        
                 </div>
                     <!-- End Page content -->
             </div>
@@ -84,5 +91,21 @@
 
         <!-- Tickets js -->
         <script src="{{ asset('assets/js/pages/tickets.js') }}"></script>
+
+        {{-- Drag and drop - Menu Edit --}}
+        <!-- Select2 js-->
+        <script src="{{ asset('assets/libs/select2/js/select2.min.js') }}"></script>
+        <!-- Dropzone file uploads-->
+        <script src="{{ asset('assets/libs/dropzone/min/dropzone.min.js') }}"></script>
+
+        <!-- Quill js -->
+        <script src="{{ asset('assets/libs/quill/quill.min.js') }}"></script>
+
+        <!-- Init js-->
+        <script src="{{ asset('assets/js/pages/form-fileuploads.init.js') }}"></script>
+
+        <!-- Init js -->
+        <script src="{{ asset('assets/js/pages/add-product.init.js') }}"></script>
+
     </body>
 </html>

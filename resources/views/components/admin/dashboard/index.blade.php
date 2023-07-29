@@ -2,9 +2,9 @@
 
 @section('content')
    
-    <!-- start page title -->
+    {{-- <!-- start page title -->
     <x-admin.dashboard.page-title />
-    <!-- end page title --> 
+    <!-- end page title -->  --}}
 
     <x-admin.dashboard.dashboard-card />
 
