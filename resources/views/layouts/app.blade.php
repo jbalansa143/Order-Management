@@ -24,6 +24,10 @@
         <!-- icons -->
         <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
+        <!-- third party css -->
+        <link href="{{ asset('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
     </head>
 
     <!-- body start -->
@@ -69,6 +73,16 @@
 
         <!-- App js-->
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
-        
+
+        {{-- Data tables JS --}}
+        <!-- third party js -->
+        <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
+        <!-- third party js ends -->
+
+        <!-- Tickets js -->
+        <script src="{{ asset('assets/js/pages/tickets.js') }}"></script>
     </body>
 </html>

@@ -59,14 +59,14 @@
                 <li class="menu-title mt-2">Apps</li>
                 <li>
                     <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                        <i class="mdi mdi-cart-outline"></i>
+                        <i class="mdi mdi-hamburger"></i>
                         <span> Menu </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarEcommerce">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="ecommerce-dashboard.html">Menu</a>
+                                <a href="{{ route('menu.index') }}">Menu</a>
                             </li>
                             <li>
                                 <a href="ecommerce-products.html">Categories</a>
@@ -83,28 +83,28 @@
 
                 <li>
                     <a href="apps-companies.html">
-                        <i class="mdi mdi-domain"></i>
+                        <i class="mdi mdi-credit-card-outline"></i>
                         <span> Payments </span>
                     </a>
                 </li>
 
                 <li>
                     <a href="apps-companies.html">
-                        <i class="mdi mdi-domain"></i>
+                        <i class="mdi mdi-dropbox"></i>
                         <span> Stocks </span>
                     </a>
                 </li>
 
                 <li>
                     <a href="apps-companies.html">
-                        <i class="mdi mdi-domain"></i>
+                        <i class="fas fa-user-friends"></i>
                         <span> Staff </span>
                     </a>
                 </li>
 
                 <li>
                     <a href="apps-companies.html">
-                        <i class="mdi mdi-domain"></i>
+                        <i class="fas fa-chart-bar"></i>
                         <span> Reports </span>
                     </a>
                 </li>
