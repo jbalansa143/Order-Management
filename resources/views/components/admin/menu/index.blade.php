@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="avatar-lg rounded-circle bg-primary">
-                            <i class="fe-tag font-22 avatar-title text-white"></i>
+                            <i class="mdi mdi-hamburger font-22 avatar-title text-white"></i>
                         </div>
                     </div>
                     <div class="col-6">
@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="avatar-lg rounded-circle bg-warning">
-                            <i class="fe-clock font-22 avatar-title text-white"></i>
+                            <i class="dripicons-checklist font-22 avatar-title text-white"></i>
                         </div>
                     </div>
                     <div class="col-6">
@@ -47,20 +47,20 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-6">
-                        <div class="avatar-lg rounded-circle bg-success">
-                            <i class="fe-check-circle font-22 avatar-title text-white"></i>
+                        <div class="avatar-lg rounded-circle bg-success border-success border shadow">
+                            <i class="ti-archive font-22 avatar-title text-white"></i>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="text-end">
-                            <h3 class="text-dark mt-1"><span data-plugin="counterup">3195</span></h3>
-                            <p class="text-muted mb-1 text-truncate">Closed Tickets</p>
+                            <h3 class="mt-1"><span data-plugin="counterup">127</span></h3>
+                            <p class="text-muted mb-1 text-truncate">Drafts</p>
                         </div>
                     </div>
                 </div> <!-- end row-->
             </div>
         </div> <!-- end widget-rounded-circle-->
-    </div> <!-- end col-->
+    </div>
 
     <div class="col-md-6 col-xl-3">
         <div class="widget-rounded-circle card">
@@ -102,7 +102,7 @@
                 <a href="{{ route('menu.create') }}" class="btn btn-sm btn-blue waves-effect waves-light float-end">
                     <i class="mdi mdi-plus-circle"></i> Add Menu
                 </a>
-                <h4 class="header-title mb-4">Manage Tickets</h4>
+                <h4 class="header-title mb-4">Manage Menus</h4>
 
                 <div class="table-responsive">
                     <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" id="tickets-table">

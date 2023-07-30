@@ -367,7 +367,7 @@
                     </a>
     
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
+                    <a href="{{ route('category.index') }}" class="dropdown-item">
                         <i class="fe-user me-1"></i>
                         <span>Category</span>
                     </a>
