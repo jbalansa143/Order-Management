@@ -15,7 +15,8 @@ class MenuController extends Controller
     {
 
         $menus = Menu::all();
-        return view('components.admin.menu.index', compact('menus'));
+        $categories = Category::all();
+        return view('components.admin.menu.index', compact('menus', 'categories'));
     }
 
     /**
@@ -23,6 +24,7 @@ class MenuController extends Controller
      */
     public function create()
     {
+
         $categories = Category::all();
         return view('components.admin.menu.create', compact('categories'));
     }

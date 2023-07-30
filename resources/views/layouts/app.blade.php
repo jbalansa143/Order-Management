@@ -40,7 +40,8 @@
 
     <!-- body start -->
     <body class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
-      <!-- Begin page -->
+
+        <!-- Begin page -->
             <div id="wrapper">
                 <!-- Topbar Start -->
                 <x-partials.top-bar />
@@ -106,6 +107,11 @@
 
         <!-- Init js -->
         <script src="{{ asset('assets/js/pages/add-product.init.js') }}"></script>
+
+        {{-- Footables Script --}}
+        <script src="{{ asset('assets/libs/footable/footable.all.min.js') }}"></script>
+        <!-- Init js -->
+        <script src="{{ asset('assets/js/pages/foo-tables.init.js') }}"></script>
 
     </body>
 </html>

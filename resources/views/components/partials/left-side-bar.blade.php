@@ -69,7 +69,7 @@
                                 <a href="{{ route('menu.index') }}">Menu</a>
                             </li>
                             <li>
-                                <a href="ecommerce-products.html">Categories</a>
+                                <a href="{{ route('category.index') }}">Categories</a>
                             </li>
                         </ul>
                     </div>

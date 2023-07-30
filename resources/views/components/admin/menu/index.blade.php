@@ -21,7 +21,7 @@
             </div>
         </div> <!-- end widget-rounded-circle-->
     </div> <!-- end col-->
-
+    
     <div class="col-md-6 col-xl-3">
         <div class="widget-rounded-circle card">
             <div class="card-body">
@@ -33,8 +33,8 @@
                     </div>
                     <div class="col-6">
                         <div class="text-end">
-                            <h3 class="text-dark mt-1"><span data-plugin="counterup">624</span></h3>
-                            <p class="text-muted mb-1 text-truncate">Pending Tickets</p>
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ $categories->count() }}</span></h3>
+                            <p class="text-muted mb-1 text-truncate">Categories</p>
                         </div>
                     </div>
                 </div> <!-- end row-->
@@ -83,6 +83,17 @@
     </div> <!-- end col-->
 </div>
 <!-- end row -->
+@if (session()->has('flash_notification.message'))
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "timeOut": "3000",
+        };
+        toastr["{{ session('flash_notification.level') }}"]("{{ session('flash_notification.message') }}");
+    </script>
+@endif
 
 <div class="row">
     <div class="col-12">
