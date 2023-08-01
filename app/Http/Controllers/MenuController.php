@@ -16,7 +16,9 @@ class MenuController extends Controller
 
         $menus = Menu::all();
         $categories = Category::all();
-        return view('components.admin.menu.index', compact('menus', 'categories'));
+        $availableCount = Menu::where('status', 1)->count();
+        $draftCount = Menu::where('status', 0)->count();
+        return view('components.admin.menu.index', compact('menus', 'categories', 'availableCount', 'draftCount'));
     }
 
     /**
@@ -39,7 +41,13 @@ class MenuController extends Controller
             'description' => 'required',
             'category' => 'required',
             'price' => ['required', 'numeric'],
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status' => '',
+            'image' => [
+                'nullable',
+                'image', 
+                'mimes:jpeg,png,jpg,gif',
+                'max:2048'
+            ],
         ]);
 
         if ($request->hasFile('image')) {
@@ -56,6 +64,7 @@ class MenuController extends Controller
         $menu->description = $validatedData['description'];
         $menu->category = $validatedData['category'];
         $menu->price = $validatedData['price'];
+        $menu->status = $validatedData['status'];
         $menu->image = $validatedData['image'];
         $menu->save();
 
@@ -85,14 +94,16 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
+        // dd($menu);
         $validate = $request->validate([
             'name' => 'required:min:2',
             'description' => 'required',
             'category' => 'required',
-            'price' => ['required', 'numeric']
+            'price' => ['required', 'numeric'],
+            'status' => ''
         ]);
-        $menu->update($validate);
         
+        $menu->update($validate);
         return redirect()->route('menu.index')->with('info', $menu->name . ' Has beed updated');
     }
 

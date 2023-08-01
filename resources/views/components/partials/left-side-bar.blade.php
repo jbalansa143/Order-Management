@@ -112,7 +112,7 @@
                 <li>
                     <a href="apps-companies.html">
                         <i class="mdi mdi-domain"></i>
-                        <span> Customer </span>
+                        <span> Reservations </span>
                     </a>
                 </li>
   

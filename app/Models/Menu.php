@@ -13,7 +13,8 @@ class Menu extends Model
         'name',
         'description',
         'category',
-        'price'
+        'price',
+        'status'
     ];
 
     public function getName() {
@@ -31,5 +32,10 @@ class Menu extends Model
     }
     public function getPrice() {
         return $this->price;
+    }
+
+    public function getStatus() {
+        $status = $this->status == 1 ? 'Available' : 'Draft';
+        return $status;
     }
 }
