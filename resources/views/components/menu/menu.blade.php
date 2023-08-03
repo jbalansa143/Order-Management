@@ -26,7 +26,7 @@
             @foreach($menus as $menu)
                 <div class="card-link hover:shadow-lg swing-in-top-fwd">
                     <div class="relative bg-white rounded-lg shadow-md">
-                        <img loading="eager" class="w-full h-48 object-cover rounded-t-lg" src="{{ asset('images/'.$menu->image) }}" alt="Category 1">
+                        <img loading="eager" class="w-full h-48 object-cover rounded-t-lg" src="{{ asset('uploads/'.$menu->image) }}" alt="Category 1">
                         <div class="p-4">
                             <h2 class="text-xl font-semibold mb-2">{{ $menu->getName() }} <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300"> {{ $menu->getPrice() }}</span></h2>
                             <p class="text-gray-700">{{ $menu->getDescription() }}</p>

@@ -10,7 +10,7 @@ class CustomerController extends Controller
 
     public function index() {
 
-        $menus = Menu::all();
+        $menus = Menu::where('status', 1)->get();
         $categories = Category::all();
 
         if($menus->isEmpty()) {
@@ -30,7 +30,7 @@ class CustomerController extends Controller
 
     public function selectedCategory(string $categoryId) {
         
-        $menus = ($categoryId === 0) ? Menu::all() : Menu::where('category', $categoryId)->get();
+        $menus = ($categoryId === 0) ? Menu::all() : Menu::where('category', $categoryId)->where('status', 1)->get();
         $categories = Category::all();
         
         if ($menus->isEmpty()) {

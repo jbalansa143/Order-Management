@@ -32,6 +32,7 @@ Route::prefix('menu')->group(function() {
 Route::prefix('category')->group(function() {
     Route::get('/', 'App\Http\Controllers\CategoryController@index')->name('category.index');
     Route::get('create', 'App\Http\Controllers\CategoryController@create')->name('category.create');
+    Route::get('edit/{category}', 'App\Http\Controllers\CategoryController@edit')->name('category.edit');
     Route::post('store', 'App\Http\Controllers\CategoryController@store')->name('category.store');
     Route::get('destroy/{category}', 'App\Http\Controllers\CategoryController@destroy')->name('category.destroy');
 });

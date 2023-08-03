@@ -53,7 +53,7 @@ class MenuController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
+            $image->move(public_path('uploads'), $imageName);
             $validatedData['image'] = $imageName;
         } else {
             $validatedData['image'] = null;
@@ -81,6 +81,8 @@ class MenuController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * @param array menu
+     * @return array menu list
      */
     public function edit(Menu $menu)
     {
@@ -91,6 +93,8 @@ class MenuController extends Controller
 
     /**
      * Update the specified resource in menu.
+     * @param array
+     * @return array view
      */
     public function update(Request $request, Menu $menu)
     {
@@ -109,6 +113,8 @@ class MenuController extends Controller
 
     /**
      * Remove the specified resource from menu.
+     * 
+     * @param array
      */
     public function destroy(Menu $menu)
     {

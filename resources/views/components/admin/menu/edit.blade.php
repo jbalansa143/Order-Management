@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -24,9 +23,9 @@
                         <label for="product-category" class="form-label">Categories <span class="text-danger">*</span></label>
                         <select name="category" class="form-control select2" id="product-category">
                             <option value="" {{ $selectedCategory == "" ? 'selected' : '' }}>Select</option>
-                            @foreach($categories as $category)
-                            <option value="{{$category->category_id}}">{{ $category->getCategoryName() }}</option>
-                            @endforeach
+                                @foreach($categories as $category)
+                                    <option value="{{$category->category_id}}" {{ $selectedCategory == $category->category_id ? 'selected' : '' }}>{{ $category->getCategoryName() }}</option>
+                                @endforeach
                         </select>
                     </div>
 
