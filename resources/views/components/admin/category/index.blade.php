@@ -29,7 +29,7 @@
                             <td>
                                 <ul>
                                 @foreach($categoryMenus[$category->category_id] as $menu)
-                                    <li>{{ $menu->getName() }}</li>
+                                    <li class="list-unstyled">{{ $menu->getName() }}</li>
                                 @endforeach
                                 </ul>
                             </td>

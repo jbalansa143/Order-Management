@@ -21,29 +21,68 @@ class Staff extends Model
         'salary',
         'emergency_number'
     ];
+
+    /**
+     * 
+     * @return string
+     */
     public function getFullname() {
         $fullname = ucfirst($this->firstname) . " " . strtoupper($this->middlename[0]) . ", " . ucfirst($this->lastname);
         return $fullname;
     }
+
+    /**
+     * 
+     * @return string
+     */
     public function getAddress() {
         return $this->address;
     }
 
+    /**
+     * 
+     * @return string
+     */
     public function getPhone() {
         return $this->phone;
     }
+
+    /**
+     * 
+     * @return string
+     */
     public function getEmail() {
         return $this->email;
     }
+
+    /**
+     * 
+     * @return string
+     */
     public function getBirthdate() {
         return $this->birthdate;
     }
+
+    /**
+     * 
+     * @return string
+     */
     public function getRole() {
         return $this->role;
     }
+
+    /**
+     * 
+     * @return string
+     */
     public function getSalary() {
         return $this->salary;
     }
+
+    /**
+     * 
+     * @return string
+     */
     public function getEmergencyNumber() {
         return $this->emergency_number;
     }

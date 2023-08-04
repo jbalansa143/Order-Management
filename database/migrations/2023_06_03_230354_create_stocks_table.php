@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('manufacturer');
             $table->integer('quantity');
             $table->decimal('cost', 8, 2);
+            $table->string('status');
             $table->timestamps();
         }); 
     }

@@ -75,42 +75,42 @@
                     </div>
                 </li>
                 <li>
-                    <a href="apps-companies.html">
+                    <a href="#">
                         <i class="mdi mdi-domain"></i>
                         <span> Tables </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="apps-companies.html">
+                    <a href="#">
                         <i class="mdi mdi-credit-card-outline"></i>
                         <span> Payments </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="apps-companies.html">
+                    <a href="{{ route('stocks.index') }}">
                         <i class="mdi mdi-dropbox"></i>
                         <span> Stocks </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="apps-companies.html">
+                    <a href="#">
                         <i class="fas fa-user-friends"></i>
                         <span> Staff </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="apps-companies.html">
+                    <a href="#">
                         <i class="fas fa-chart-bar"></i>
                         <span> Reports </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="apps-companies.html">
+                    <a href="#">
                         <i class="mdi mdi-domain"></i>
                         <span> Reservations </span>
                     </a>
