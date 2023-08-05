@@ -55,7 +55,7 @@ class StockController extends Controller
      */
     public function edit(Stock $stock)
     {
-
+        
         return view('components.admin.stocks.edit', compact('stock'));
     }
 

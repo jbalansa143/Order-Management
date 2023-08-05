@@ -14,7 +14,7 @@
                     <div class="col-6">
                         <div class="text-end">
                             <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ $stocks->count() }}</span></h3>
-                            <p class="text-muted mb-1 text-truncate">Total Stocks</p>
+                            <p class="text-muted mb-1 text-truncate">Total Items</p>
                         </div>
                     </div>
                 </div> <!-- end row-->
@@ -81,18 +81,6 @@
     </div>
 </div>
 <!-- end row -->
-@if (session()->has('flash_notification.message'))
-    <script>
-        toastr.options = {
-            "closeButton": true,
-            "progressBar": true,
-            "positionClass": "toast-top-right",
-            "timeOut": "3000",
-        };
-        toastr["{{ session('flash_notification.level') }}"]("{{ session('flash_notification.message') }}");
-    </script>
-@endif
-
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -146,7 +134,7 @@
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil me-2 text-muted font-18 vertical-middle"></i>Edit Menu</a>
+                                        <a class="dropdown-item" href="{{ route('stocks.edit', $stock->getId()) }}"><i class="mdi mdi-pencil me-2 text-muted font-18 vertical-middle"></i>Edit Menu</a>
                                         <a class="dropdown-item" href="{{ route('stocks.destroy', $stock->getId()) }}"><i class="mdi mdi-delete me-2 text-muted font-18 vertical-middle"></i>Remove</a>                                    </div>
                                 </div>
                             </td>
