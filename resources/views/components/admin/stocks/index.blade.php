@@ -98,7 +98,7 @@
         <div class="card">
             <div class="card-body">
                 <a href="{{ route('stocks.create') }}" class="btn btn-sm btn-blue waves-effect waves-light float-end">
-                    <i class="mdi mdi-plus-circle"></i> Add Menu
+                    <i class="mdi mdi-plus-circle"></i> Add Item
                 </a>
                 <h4 class="header-title mb-4">Inventory</h4>
                 <div class="table-responsive">
@@ -147,7 +147,7 @@
                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="#"><i class="mdi mdi-pencil me-2 text-muted font-18 vertical-middle"></i>Edit Menu</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-delete me-2 text-muted font-18 vertical-middle"></i>Remove</a>                                    </div>
+                                        <a class="dropdown-item" href="{{ route('stocks.destroy', $stock->getId()) }}"><i class="mdi mdi-delete me-2 text-muted font-18 vertical-middle"></i>Remove</a>                                    </div>
                                 </div>
                             </td>
                         </tr>
