@@ -96,7 +96,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{ route('staff.index') }}">
                         <i class="fas fa-user-friends"></i>
                         <span> Staff </span>
                     </a>
