@@ -57,10 +57,13 @@ class StaffController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * @param int
+     * @return view edit staff
      */
-    public function edit(string $id)
+    public function edit(Staff $staff)
     {
-        //
+        
+        return view('components.admin.staff.edit', compact('staff'));
     }
 
     /**

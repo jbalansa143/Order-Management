@@ -35,6 +35,31 @@ class Staff extends Model
      * 
      * @return string
      */
+    public function getFirstname() {
+        return $this->firstname;
+    }
+
+    /**
+     * 
+     * @return string 
+     */
+
+    public function getMiddlename() {
+        return $this->middlename;
+    }
+
+    /**
+     * 
+     * @return string
+     */
+    public function getLastName() {
+        return $this->lastname;
+    }
+
+    /**
+     * 
+     * @return string
+     */
     public function getAddress() {
         return $this->address;
     }

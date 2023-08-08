@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <a href="#" class="btn btn-sm btn-blue waves-effect waves-light float-end">
+                <a href="{{ route('staff.create') }}" class="btn btn-sm btn-blue waves-effect waves-light float-end">
                     <i class="mdi mdi-plus-circle"></i> Add Staff
                 </a>
                 <h4 class="header-title mb-4">Staff</h4>
@@ -54,8 +54,8 @@
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil me-2 text-muted font-18 vertical-middle"></i>Edit Menu</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-delete me-2 text-muted font-18 vertical-middle"></i>Remove</a>                                    </div>
+                                        <a class="dropdown-item" href="{{ route('staff.edit', $staff->id) }}"><i class="mdi mdi-pencil me-2 text-muted font-18 vertical-middle"></i>Edit Menu</a>
+                                        <a class="dropdown-item" href="{{ route('staff.destroy', $staff->id) }}"><i class="mdi mdi-delete me-2 text-muted font-18 vertical-middle"></i>Remove</a>                                    </div>
                                 </div>
                             </td>
                         </tr>

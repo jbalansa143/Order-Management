@@ -52,21 +52,23 @@ Route::prefix('table')->group(function () {
 Route::prefix('stock')->group(function () {
     Route::get('/', 'App\Http\Controllers\StockController@index')->name('stocks.index');
     Route::get('create', 'App\Http\Controllers\StockController@create')->name('stocks.create');
-    Route::post('create', 'App\Http\Controllers\StockController@store')->name('stocks.store');
+    Route::post('store', 'App\Http\Controllers\StockController@store')->name('stocks.store');
     Route::get('edit/{stock}', 'App\Http\Controllers\StockController@edit')->name('stocks.edit');
     Route::put('update/{stock}', 'App\Http\Controllers\StockController@update')->name('stocks.update');
     Route::get('destroy/{stock}', 'App\Http\Controllers\StockController@destroy')->name('stocks.destroy');
 });
 
 //Staff Controller
-
 Route::prefix('staff')->group(function() {
       Route::get('/', 'App\Http\Controllers\StaffController@index')->name('staff.index');
       Route::get('create', 'App\Http\Controllers\StaffController@create')->name('staff.create');
       Route::post('store', 'App\Http\Controllers\StaffController@store')->name('staff.store');
+      Route::get('edit/{staff}', 'App\Http\Controllers\StaffController@edit')->name('staff.edit');
+      Route::get('update{staff}', 'App\Http\Controllers\StaffController@update')->name('staff.update');
       Route::get('destroy/{staff}', 'App\Http\Controllers\StaffController@destroy')->name('staff.destroy');
 });
 
+// Customer menu and checkout routes
 Route::prefix('customer')->group(function () {
     Route::get('menus', 'App\Http\Controllers\CustomerController@index')->name('customer.index');
     Route::get('selectedCategory/{categoryId}', 'App\Http\Controllers\CustomerController@selectedCategory')->name('menu.selectedCategory');
