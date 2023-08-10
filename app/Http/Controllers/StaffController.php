@@ -69,9 +69,24 @@ class StaffController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Staff $staff)
     {
-        //
+        $validate = $request->validate([
+            'firstname' => 'required|min:2',
+            'middlename' => 'required',
+            'lastname' => 'required|min:2',
+            'address' => 'required',
+            'phone' => 'required|numeric',
+            'email' => 'required|email',
+            'birthdate' => 'required|date',
+            'role' => '',
+            'salary' => 'required|numeric',
+            'emergency_number' => 'nullable',
+        ]);
+
+        $staff->update($validate);
+        return redirect()->route('staff.index')->with('success', 'New staff has been added');
+
     }
 
     /**

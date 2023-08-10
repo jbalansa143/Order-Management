@@ -8,6 +8,7 @@
                 <h5 class="text-uppercase bg-light p-2 mt-0 mb-3">Edit</h5>
                 <form action="{{ route('staff.update', $staff->id) }}" method="post">
                     @csrf
+                    @method('put')
                     <div class="mb-3">
                         <label for="product-name" class="form-label">Firstname<span class="text-danger">*</span></label>
                         <input type="text" value="{{ $staff->getFirstname() }}" name="firstname" class="form-control" placeholder="Enter the name of the item">

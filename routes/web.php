@@ -64,7 +64,7 @@ Route::prefix('staff')->group(function() {
       Route::get('create', 'App\Http\Controllers\StaffController@create')->name('staff.create');
       Route::post('store', 'App\Http\Controllers\StaffController@store')->name('staff.store');
       Route::get('edit/{staff}', 'App\Http\Controllers\StaffController@edit')->name('staff.edit');
-      Route::get('update{staff}', 'App\Http\Controllers\StaffController@update')->name('staff.update');
+      Route::put('update/{staff}', 'App\Http\Controllers\StaffController@update')->name('staff.update');
       Route::get('destroy/{staff}', 'App\Http\Controllers\StaffController@destroy')->name('staff.destroy');
 });
 

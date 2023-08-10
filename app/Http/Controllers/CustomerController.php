@@ -49,6 +49,6 @@ class CustomerController extends Controller
     public function checkout(Menu $menu) {
         
         $menus = Menu::all();
-        return view('customer.checkout', compact('menu', 'menus'));
+        return view('components.customer.checkout', compact('menu', 'menus'));
     }
 }
