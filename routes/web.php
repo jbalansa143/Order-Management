@@ -72,5 +72,5 @@ Route::prefix('staff')->group(function() {
 Route::prefix('customer')->group(function () {
     Route::get('menus', 'App\Http\Controllers\CustomerController@index')->name('customer.index');
     Route::get('selectedCategory/{categoryId}', 'App\Http\Controllers\CustomerController@selectedCategory')->name('menu.selectedCategory');
-    Route::get('checkout/{menu}', 'App\Http\Controllers\CustomerController@checkout')->name('menu.checkout');
+    Route::post('checkout/{menu}', 'App\Http\Controllers\CustomerController@checkout')->name('menu.checkout');
 });

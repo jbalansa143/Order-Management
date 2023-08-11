@@ -46,8 +46,9 @@ class CustomerController extends Controller
              'categories' => $categories
             ]);
     }
-    public function checkout(Menu $menu) {
+    public function checkout(Menu $menu, Request $request) {
         
+        dd($request);
         $menus = Menu::all();
         return view('components.customer.checkout', compact('menu', 'menus'));
     }
