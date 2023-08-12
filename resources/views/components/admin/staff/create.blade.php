@@ -62,7 +62,7 @@
                         <option>Choose Role</option>
                         <option value="1">Cashier</option>
                         <option value="2">Kitchen</option>
-                        <option value="3">Staff </option>
+                        <option value="3">Staff</option>
                     </select>
                 </div>
 

@@ -60,12 +60,11 @@
                 <div class="mb-3 col-md-4">
                     <label for="inputState" class="form-label">Role</label>
                     <select name="role" id="inputState" class="form-select">
-                        {{-- Working --}}
-                        <option>Choose Role</option>
-                        {{-- <option value="{{$staff->getRole()}}" {{ $staff->getRole() == $staff->id ? 'selected' : '' }}>Cashier</option>
-                        <option value="{{$staff->getRole()}}" {{ $staff->getRole() == $staff->id ? 'selected' : '' }}>Kitchen</option>
-                        <option value="{{$staff->getRole()}}" {{ $staff->getRole() == $staff->id ? 'selected' : '' }}>Staff </option> --}}
-                    </select>
+                        <option value="">Choose Role</option>
+                        <option value="1" {{ ($staff->getRole() == 'Cashier') ? 'selected' : '' }}>Cashier</option>
+                        <option value="2" {{ ($staff->getRole() == 'Kitchen') ? 'selected' : '' }}>Kitchen</option>
+                        <option value="3" {{ ($staff->getRole() == 'Staff') ? 'selected' : '' }}>Staff</option>
+                    </select> 
                 </div>
 
                 <div class="row">
