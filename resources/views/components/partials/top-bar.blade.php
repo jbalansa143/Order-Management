@@ -379,7 +379,7 @@
                     </a>
     
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
+                    <a href="{{ route('stocks.create') }}" class="dropdown-item">
                         <i class="fe-settings me-1"></i>
                         <span>Stocks</span>
                     </a>
@@ -391,7 +391,7 @@
                     <div class="dropdown-divider"></div>
     
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
+                    <a href="{{ route('staff.create') }}" class="dropdown-item">
                         <i class="fe-headphones me-1"></i>
                         <span>Staff</span>
                     </a>

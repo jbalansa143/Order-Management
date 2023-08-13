@@ -17,7 +17,7 @@
                 {{-- <button class="btn btn-sm btn-primary"><i class="mdi mdi-plus-circle"></i> Add</button> --}}
                 <table id="demo-foo-accordion" class="table table-colored mb-0 toggle-arrow-tiny">
                     <thead>
-                            <th> Name </th>
+                            <th> Category name </th>
                             <th data-hide="all"></th>
                             <th> Option </th>
                         </tr>

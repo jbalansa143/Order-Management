@@ -10,6 +10,8 @@ class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
+     * @return view
      */
     public function index()
     {
@@ -33,6 +35,9 @@ class MenuController extends Controller
 
     /**
      * Store a newly created resource in menu.
+     * 
+     * @param array request
+     * @return view
      */
     public function store(Request $request)
 {
@@ -58,7 +63,7 @@ class MenuController extends Controller
         } else {
             $validatedData['image'] = null;
         }
-
+        // getting user input request and storing to database 
         $menu = new Menu;
         $menu->name = $validatedData['name'];
         $menu->description = $validatedData['description'];
@@ -73,6 +78,7 @@ class MenuController extends Controller
 
     /**
      * Display the specified resource.
+     * @param int
      */
     public function show(string $id)
     {
@@ -83,6 +89,7 @@ class MenuController extends Controller
      * Show the form for editing the specified resource.
      * @param array menu
      * @return array menu list
+     * @return view
      */
     public function edit(Menu $menu)
     {
@@ -98,7 +105,7 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
-        // dd($menu);
+        
         $validate = $request->validate([
             'name' => 'required:min:2',
             'description' => 'required',

@@ -10,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
-
+      
         <!-- plugin css -->
         <link href="{{ asset('assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css" />
 
@@ -53,7 +53,7 @@
 
                         <!-- Start Content-->
                         <div class="container-fluid">                 
-                            <x-admin.dashboard.page-title />
+                            <x-partials.page-title title="dashboard" />
                                 @yield('content')
                         </div> 
 

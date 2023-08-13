@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Menu;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Category;
 class CustomerController extends Controller
@@ -46,10 +47,15 @@ class CustomerController extends Controller
              'categories' => $categories
             ]);
     }
-    public function checkout(Menu $menu, Request $request) {
+    public function checkout(Request $request) {
         
-        dd($request);
-        $menus = Menu::all();
-        return view('components.customer.checkout', compact('menu', 'menus'));
+        $order = new Order;
+        $order->menu = $request->menu;
+        $order->category = $request->category;
+        $order->quantity = $request->quantity;
+        $order->price = $request->price;
+        $order->save();
+        
+        return redirect()->route('customer.index');
     }
 }
