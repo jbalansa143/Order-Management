@@ -47,15 +47,4 @@ class CustomerController extends Controller
              'categories' => $categories
             ]);
     }
-    public function checkout(Request $request) {
-        
-        $order = new Order;
-        $order->menu = $request->menu;
-        $order->category = $request->category;
-        $order->quantity = $request->quantity;
-        $order->price = $request->price;
-        $order->save();
-        
-        return redirect()->route('customer.index');
-    }
 }

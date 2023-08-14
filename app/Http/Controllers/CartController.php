@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Order;
+use App\Models\Cart;
+use App\Models\Menu;
 
-class OrderController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,19 +17,23 @@ class OrderController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Menu $menu, Request $request)
     {
-        //
+        
+        foreach($menu->getCategory() as $category) {
+            $category = $category->category;
+        }
+
+        $cart = new Cart;
+        $cart->menu =  $menu->getName();
+        $cart->category =  $category;
+        $cart->quantity = 1;
+        $cart->price = $menu->getPrice();
+        $cart->save();
+        
+        return redirect()->route('customer.index');
     }
 
     /**

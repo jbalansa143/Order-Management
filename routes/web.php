@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\DashboardController@index');
 
 
-// Dashboard Controller
-// Route::get('/', 'App\Http\Controllers\SummaryController@index')->name('dashboard');
-
 //Menu Controllers
 Route::prefix('menu')->group(function() {
     Route::get('/', 'App\Http\Controllers\MenuController@index')->name('menu.index');
@@ -72,5 +69,9 @@ Route::prefix('staff')->group(function() {
 Route::prefix('customer')->group(function () {
     Route::get('menus', 'App\Http\Controllers\CustomerController@index')->name('customer.index');
     Route::get('selectedCategory/{categoryId}', 'App\Http\Controllers\CustomerController@selectedCategory')->name('menu.selectedCategory');
-    Route::post('checkout/{menu}', 'App\Http\Controllers\CustomerController@checkout')->name('menu.checkout');
+
+    Route::prefix('cart')->group(function() {
+        Route::get('store/{menu}', 'App\Http\Controllers\CartController@store')->name('cart.store');
+    });
 });
+
