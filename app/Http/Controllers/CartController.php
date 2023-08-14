@@ -13,7 +13,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+       
     }
 
     /**
@@ -21,17 +21,20 @@ class CartController extends Controller
      */
     public function store(Menu $menu, Request $request)
     {
-        
+        // Get Category name
         foreach($menu->getCategory() as $category) {
             $category = $category->category;
         }
-
+     
         $cart = new Cart;
+        $cart->menu_id = $menu->id;
         $cart->menu =  $menu->getName();
         $cart->category =  $category;
         $cart->quantity = 1;
         $cart->price = $menu->getPrice();
+
         $cart->save();
+       
         
         return redirect()->route('customer.index');
     }
