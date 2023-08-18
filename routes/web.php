@@ -25,7 +25,7 @@ Route::prefix('menu')->group(function() {
     Route::put('update/{menu}', 'App\Http\Controllers\MenuController@update')->name('menu.update');
     Route::get('destroy/{menu}', 'App\Http\Controllers\MenuController@destroy')->name('menu.destroy');
 });
-// Menu Category Controller
+// Category Controller - Menu
 Route::prefix('category')->group(function() {
     Route::get('/', 'App\Http\Controllers\CategoryController@index')->name('category.index');
     Route::get('create', 'App\Http\Controllers\CategoryController@create')->name('category.create');
@@ -36,14 +36,14 @@ Route::prefix('category')->group(function() {
 
 
 // Table Controller
-Route::prefix('table')->group(function () {
-    Route::get('/', 'App\Http\Controllers\TableController@index')->name('table.index');
-    Route::get('create', 'App\Http\Controllers\TableController@create')->name('table.create');
-    Route::post('store', 'App\Http\Controllers\TableController@store')->name('table.store');
-    Route::get('edit/{table}', 'App\Http\Controllers\TableController@edit')->name('table.edit');
-    Route::put('update/{table}', 'App\Http\Controllers\TableController@update')->name('table.update');
-    Route::get('destroy/{table}', 'App\Http\Controllers\TableController@destroy')->name('table.destroy');
-});
+// Route::prefix('table')->group(function () {
+//     Route::get('/', 'App\Http\Controllers\TableController@index')->name('table.index');
+//     Route::get('create', 'App\Http\Controllers\TableController@create')->name('table.create');
+//     Route::post('store', 'App\Http\Controllers\TableController@store')->name('table.store');
+//     Route::get('edit/{table}', 'App\Http\Controllers\TableController@edit')->name('table.edit');
+//     Route::put('update/{table}', 'App\Http\Controllers\TableController@update')->name('table.update');
+//     Route::get('destroy/{table}', 'App\Http\Controllers\TableController@destroy')->name('table.destroy');
+// });
 
 // Stocks Controller
 Route::prefix('stock')->group(function () {
@@ -71,7 +71,9 @@ Route::prefix('customer')->group(function () {
     Route::get('selectedCategory/{categoryId}', 'App\Http\Controllers\CustomerController@selectedCategory')->name('menu.selectedCategory');
 
     Route::prefix('cart')->group(function() {
+        Route::get('/', 'App\Http\Controllers\CartController@index')->name('cart.index');
         Route::get('store/{menu}', 'App\Http\Controllers\CartController@store')->name('cart.store');
+        // Route::get('destroy/{menu}', 'App\Http\Controllers\CartController@destroy')->name('cart.destroy');
     });
 });
 

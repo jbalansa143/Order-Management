@@ -13,7 +13,8 @@ class CartController extends Controller
      */
     public function index()
     {
-       
+        $cart = Cart::all();
+       return view('components.cart.index', compact('cart'));
     }
 
     /**
@@ -66,8 +67,8 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Menu $menu)
     {
-        //
+        return "<h1>Helloworld</h1>";
     }
 }

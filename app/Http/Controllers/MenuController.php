@@ -89,7 +89,7 @@ class MenuController extends Controller
      * Show the form for editing the specified resource.
      * @param array menu
      * @return array menu list
-     * @return view
+     * 
      */
     public function edit(Menu $menu)
     {
