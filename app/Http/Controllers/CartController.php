@@ -10,15 +10,19 @@ class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
+     * @return array
      */
     public function index()
     {
         $cart = Cart::all();
-       return view('components.cart.index', compact('cart'));
+       return view('components.menu.cart', compact('cart'));
     }
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @param array
      */
     public function store(Menu $menu, Request $request)
     {
@@ -31,7 +35,7 @@ class CartController extends Controller
         $cart->menu_id = $menu->id;
         $cart->menu =  $menu->getName();
         $cart->category =  $category;
-        $cart->quantity = 1;
+        $cart->quantity = $request->qty;
         $cart->price = $menu->getPrice();
 
         $cart->save();
@@ -42,18 +46,11 @@ class CartController extends Controller
 
     /**
      * Display the specified resource.
+     * @return array
      */
-    public function show(string $id)
+    public function show(Menu $menu)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        return view('components.menu.detail', compact('menu'));
     }
 
     /**
@@ -66,9 +63,12 @@ class CartController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * 
+     * @param array
      */
-    public function destroy(Menu $menu)
+    public function destroy(Cart $cart)
     {
-        return "<h1>Helloworld</h1>";
+        $cart->delete();
+        return redirect()->route('cart.index')->with('danger', 'Item has been deleted!');
     }
 }

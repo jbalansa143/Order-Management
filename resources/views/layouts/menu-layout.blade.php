@@ -13,8 +13,7 @@
         <script src="https://cdn.tailwindcss.com"></script> 
           {{-- Tailwind css and scripts --}}
           @vite(['resources/css/app.css','resources/js/app.js'])
-        {{-- Sweet alert CDN --}}
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="resources/css/menu.css">
@@ -25,7 +24,9 @@
         </style>
     </head>
     <body class="antialiased">
-        @yield('content')
+       
+            @yield('content')
+            
         @livewireScripts
     </body>
 </html>

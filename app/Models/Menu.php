@@ -41,7 +41,7 @@ class Menu extends Model
      * @return string
      */
     public function getDescription() {
-        $limitedText = Str::words($this->description, 6, '...');
+        $limitedText = Str::words($this->description, 4, '...');
         return $limitedText;
     }
 

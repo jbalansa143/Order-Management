@@ -69,11 +69,12 @@ Route::prefix('staff')->group(function() {
 Route::prefix('customer')->group(function () {
     Route::get('menus', 'App\Http\Controllers\CustomerController@index')->name('customer.index');
     Route::get('selectedCategory/{categoryId}', 'App\Http\Controllers\CustomerController@selectedCategory')->name('menu.selectedCategory');
+    Route::get('menu/detail/{menu}', 'App\Http\Controllers\CartController@show')->name('menu.show');
 
     Route::prefix('cart')->group(function() {
         Route::get('/', 'App\Http\Controllers\CartController@index')->name('cart.index');
-        Route::get('store/{menu}', 'App\Http\Controllers\CartController@store')->name('cart.store');
-        // Route::get('destroy/{menu}', 'App\Http\Controllers\CartController@destroy')->name('cart.destroy');
+        Route::post('store/{menu}', 'App\Http\Controllers\CartController@store')->name('cart.store');
+        Route::get('destroy/{cart}', 'App\Http\Controllers\CartController@destroy')->name('cart.destroy');
     });
 });
 
