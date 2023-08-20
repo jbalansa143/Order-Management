@@ -15,6 +15,7 @@ class Cart extends Model
         'category',
         'quantity',
         'price',
+        'image',
         'is_completed',
     ]; 
 }

@@ -35,13 +35,14 @@ class CartController extends Controller
         $cart->menu_id = $menu->id;
         $cart->menu =  $menu->getName();
         $cart->category =  $category;
+        $cart->image =  $menu->image;
         $cart->quantity = $request->qty;
         $cart->price = $menu->getPrice();
 
         $cart->save();
        
         
-        return redirect()->route('customer.index');
+        return redirect()->route('cart.index');
     }
 
     /**

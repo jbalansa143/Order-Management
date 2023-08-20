@@ -36,7 +36,7 @@
                                                             @foreach($cart as $cartItem)
                                                             <tr>
                                                                 <td>
-                                                                    <img src="{{  asset('assets/images/products/product-1.png') }}" alt="contact-img"
+                                                                    <img width="80"  src="{{  asset('uploads/' . $cartItem->image) }}" 
                                                                         title="contact-img" class="rounded me-3" height="48" />
                                                                     <p class="m-0 d-inline-block align-middle font-16">
                                                                         <a href="ecommerce-product-detail.html" class="text-reset font-family-secondary">{{ $cartItem->menu }}</a>
@@ -53,7 +53,7 @@
                                                                     <input type="number" max="10" min="1" value="{{ $cartItem->quantity }}" class="form-control" placeholder="Qty" style="width: 90px;">
                                                                 </td>
                                                                 <td>
-                                                                    ₱{{ $cartItem->price * $cartItem->quantity }}
+                                                                    ₱345
                                                                 </td>
                                                                 <td>
                                                                     <a href="{{ route('cart.destroy', $cartItem->id) }}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
@@ -83,7 +83,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Total :</th>
-                                                                    <th>₱{{ $cartItem->sum('price') * $cartItem->sum('quantity') }}</th>
+                                                                    <th>₱234</th>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -119,4 +119,13 @@
                         <!-- end row -->
 
         </div>
-@endsection
+        <!-- END wrapper -->
+
+        <!-- Vendor js -->
+        <script src="{{  asset('assets/js/vendor.min.js') }}"></script>
+
+        <!-- App js -->
+        <script src="{{  asset('assets/js/app.min.js') }}"></script>
+        
+    </body>
+</html>

@@ -45,7 +45,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-lg-5">
+                                            <div class="col-lg-5 d-flex align-items-center justify-content-center">
     
                                                 <div class="tab-content pt-0">
                                                     <div class="tab-pane active show" id="product-1-item">
