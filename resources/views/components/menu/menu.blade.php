@@ -1,4 +1,4 @@
-@extends('layouts.menu-layout')
+@extends('layouts.menu')
 
 @section('content')
 {{--Style Animation--}}

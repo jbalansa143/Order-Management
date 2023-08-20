@@ -1,30 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Cart | UBold - Responsive Admin Dashboard Template</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="{{  asset('assets/images/favicon.ico') }}">
+@extends('layouts.cart')
 
-	    <!-- App css -->
-	    <link href="{{  asset('assets/css/config/material/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-	    <link href="{{  asset('assets/css/config/material/app.min.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
-
-	    <link href="{{  asset('assets/css/config/material/bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-	    <link href="{{  asset('assets/css/config/material/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
-
-	    <!-- icons -->
-	    <link href="{{  asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-
-    </head>
-
-    <!-- body start -->
-    <body class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
-
+@section('content')
         <!-- Begin page -->
         <div id="wrapper">
                     <!-- Start Content-->
@@ -103,19 +79,11 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Discount : </td>
-                                                                    <td>-$157.11</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Shipping Charge :</td>
-                                                                    <td>$25</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Estimated Tax : </td>
-                                                                    <td>$19.22</td>
+                                                                    <td>0</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Total :</th>
-                                                                    <th>$1458.3</th>
+                                                                    <th>₱{{ $cartItem->sum('price') * $cartItem->sum('quantity') }}</th>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -151,13 +119,4 @@
                         <!-- end row -->
 
         </div>
-        <!-- END wrapper -->
-
-        <!-- Vendor js -->
-        <script src="{{  asset('assets/js/vendor.min.js') }}"></script>
-
-        <!-- App js -->
-        <script src="{{  asset('assets/js/app.min.js') }}"></script>
-        
-    </body>
-</html>
+@endsection

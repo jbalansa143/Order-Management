@@ -65,7 +65,7 @@
                                                     </p>
                                                     <p class="mb-4"><a href="" class="text-muted">( 36 Customer Reviews )</a></p>
                                                     <h6 class="text-danger text-uppercase">20 % Off</h6>
-                                                    <h4 class="mb-4">Price :<b>₱{{ $menu->getPrice() }}</b></h4>
+                                                    <h4 class="mb-4">Price : <b>₱{{ $menu->getPrice() }}</b></h4>
                                                     <h4><span class="badge bg-soft-success text-success mb-4">{{ $menu->getStatus() }}</span></h4>
                                                     <p class="text-muted mb-4">{{ $menu->description }}</p>
 
@@ -90,8 +90,8 @@
                                                         </div>
                                                     </div>
     
-                                                    <div>
-                                                        <a href="{{ route('customer.index') }}" class="btn btn-danger me-2">Back</a>
+                                                    <div class="d-flex justify-around align-items-center">
+                                                        <a href="{{ route('customer.index') }}" class="btn btn-outline-secondary me-2">Back</a>
                                                         <button type="submit" class="btn btn-success waves-effect waves-light">
                                                             <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
                                                         </button>
@@ -108,12 +108,6 @@
                         </div>
                         <!-- end row-->
             </div>
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
-
         </div>
         <!-- END wrapper -->
     {{-- Vendor js --}}
