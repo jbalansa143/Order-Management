@@ -38,25 +38,22 @@
                 <p class="text-center font-bold">Temporarily no menus available.</p>
             </div>
         @else
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-20">
+        <div class="flex flex-wrap gap-4 px-4 sm:px-6 md:px-8 lg:px-20 justify-center">
             @foreach($menus as $menu)
-                <div class="card-link hover:shadow-lg swing-in-top-fwd">
-                    <div class="relative bg-white rounded-lg shadow-md">
+                <a href="{{ route('menu.show', $menu->id) }}" class="card-link hover:shadow-lg swing-in-top-fwd w-full sm:w-1/2  md:w-1/3 lg:w-1/4">
+                    <div class="relative bg-white rounded-lg shadow-md flex flex-col">
                         <img loading="eager" class="w-full h-48 object-cover rounded-t-lg" src="{{ asset('uploads/'.$menu->image) }}" alt="Category 1">
-                        <div class="p-4">
-                            <h2 class="text-xl font-semibold mb-2">{{ $menu->getName() }} <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300"> {{ $menu->getPrice() }}</span></h2>
+                        <div class="p-4 flex-1">
+                            <h2 class="text-xl font-semibold mb-2">{{ $menu->getName() }}</h2>
                             <p class="text-gray-700">{{ $menu->getDescription() }}</p>
                         </div>
-                            <a href="{{ route('menu.show', $menu->id) }}" class="absolute bottom-4 right-4 text-black  hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                              
-                                More Info
-                            </a>
+                        <h1 class="absolute bottom-4 right-4 text-lg ">{{ $menu->getPrice() }}</h1>
                     </div>
-                </div>
+                </a>
             @endforeach
+        </div>
+        
         @endif
-    </div>
-  
   <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
       <div class="relative w-full max-w-md max-h-full">
           <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
