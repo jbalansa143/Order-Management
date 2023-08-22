@@ -12,8 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id(); 
+            $table->unsignedBigInteger('menu_id');
+            $table->string('menu'); 
+            $table->string('category');  
+            $table->integer('quantity');  
+            $table->decimal('price', 8, 2);  
+            $table->string('image'); 
+            $table->boolean('is_completed')->default(false); 
+            $table->timestamps();  
         });
     }
 

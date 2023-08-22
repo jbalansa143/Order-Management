@@ -78,3 +78,9 @@ Route::prefix('customer')->group(function () {
     });
 });
 
+
+//Order route 
+Route::prefix('order')->group(function() {
+    Route::get('store', 'App\Http\Controllers\OrderController@store')->name('order.store');
+}); 
+

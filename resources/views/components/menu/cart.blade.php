@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Begin page -->
-<div id="wrapper">
+<div id="wrapper" class="bg-light">
 <!-- Start Content-->
 <div class="container">
 
@@ -102,7 +102,7 @@
                         </div> <!-- end col -->
                         <div class="d-grid gap-2 col-6 mx-auto mt-4">
                             {{-- <input type="text" class="form-control form-control-light" placeholder="Coupon code" aria-label="Recipient's username"> --}}
-                            <a href="ecommerce-checkout.html" class="btn btn-primary"><i class="mdi mdi-cart-plus me-1"></i> Checkout</a>
+                            <a href="{{ route('order.store') }}" class="btn btn-primary"><i class="mdi mdi-cart-plus me-1"></i> Checkout</a>
                             
                                     <a href="{{ route('customer.index') }}" class="btn text-muted d-none d-sm-inline-block btn-link fw-semibold">
                                         <i class="mdi mdi-arrow-left"></i> Order more</a>
