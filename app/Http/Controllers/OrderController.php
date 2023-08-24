@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Order;
 
 class OrderController extends Controller
 {
@@ -25,11 +26,26 @@ class OrderController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @param array $cart
+     * @param array $request
+     * @return void
      */
     public function store(Cart $cart, Request $request)
     {
-        $cart = Cart::all();
-        dump($cart);
+        $cartItems = Cart::all();
+        foreach($cartItems as $cartItem) {
+
+            $order = new Order;
+            $order->menu = $cartItem->menu;
+            $order->category = $cartItem->category;
+            $order->quantity = $cartItem->quantity;
+            $order->price = $cartItem->price * $cartItem->quantity;;
+            $order->image = $cartItem->image;
+            $order->is_completed = $cartItem->is_completed;
+            $order->save();
+
+        }
     }
 
     /**
