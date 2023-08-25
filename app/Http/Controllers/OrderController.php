@@ -7,7 +7,6 @@ use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Support\Str;
 
-
 class OrderController extends Controller
 {
     /**
@@ -33,7 +32,9 @@ class OrderController extends Controller
             $order->is_completed = $cartItem->is_completed;
             $order->save();
         }
-
+        //deleting order after saving to database
+        $cart->truncate();
+        
         return redirect()->route('order.complete');
     }
 
