@@ -11,22 +11,6 @@ use Illuminate\Support\Str;
 class OrderController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      * 
      * @param array $cart
@@ -37,7 +21,6 @@ class OrderController extends Controller
     {
         $cartItems = Cart::all();
         $order_number = Str::random(5);
-        
         foreach($cartItems as $cartItem) {
 
             $order = new Order;
@@ -50,37 +33,16 @@ class OrderController extends Controller
             $order->is_completed = $cartItem->is_completed;
             $order->save();
         }
+
+        return redirect()->route('order.complete');
     }
 
     /**
-     * Display the specified resource.
+     * Display the complete view
      */
-    public function show(string $id)
+    public function complete()
     {
-        //
+        return view('components.menu.complete');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }
