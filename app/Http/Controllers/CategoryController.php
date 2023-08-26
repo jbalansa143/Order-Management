@@ -56,8 +56,14 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        
-        return view('components.admin.category.edit', compact('category'));
+        $categories = Category::all();
+        $categoryMenus = [];
+
+        foreach ($categories as $data) {
+            $menus = Menu::where('category', $data->category_id)->get();
+            $categoryMenus[$data->category_id] = $menus;
+        }
+        return view('components.admin.category.edit', compact('category', 'categories', 'categoryMenus'));
     }
 
     /**
@@ -65,7 +71,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validatedData = $request->validate([
+            'category' => 'required|min:3',
+        ]);
+        $category->update($validatedData);
+
+        return redirect()->route('category.index')->with('success', 'Category has been');
     }
 
     /**

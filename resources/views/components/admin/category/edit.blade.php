@@ -6,10 +6,11 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Categories</h4>
-                <form method="POST" action="{{ route('category.store') }}">
-                <div class="input-group float-start mb-2 mt-3 w-50">
+              
+                <form method="POST" action="{{ route('category.update', $category->id) }}">
+                    <div class="input-group float-start mb-2 mt-3 w-50">
+                    @method('put')    
                     @csrf
-                    <input type="hidden" value="{{ Illuminate\Support\Str::random(20) }}" name="category_id" />
                     <input type="text" value="{{ $category->getCategoryName() }}" name="category" class="form-control" placeholder="Enter new category">
                     <button class="btn btn-primary" type="submit" id="button-addon2">Update</button>
                     <a href="{{ route('category.index') }}" class="btn btn-outline-secondary" type="submit" id="button-addon2">Cancel</a>
@@ -24,9 +25,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach($category as $data)
+                        @foreach($categories as $category)
                         <tr>
-                            <td>{{ $data->getCategoryName() }}</td>
+                            <td>{{ $category->getCategoryName() }}</td>
                             <td>
                                 <ul>
                                 @foreach($categoryMenus[$category->category_id] as $menu)
@@ -38,14 +39,13 @@
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil me-2 text-muted font-18 vertical-middle"></i>Edit</a>
+                                        <a class="dropdown-item" href="{{ route('category.edit', $category->id) }}"><i class="mdi mdi-pencil me-2 text-muted font-18 vertical-middle"></i>Edit</a>
                                         <a class="dropdown-item" href="{{ route('category.destroy', $category->id) }}"><i class="mdi mdi-delete me-2 text-muted font-18 vertical-middle"></i>Remove</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-star me-2 font-18 text-muted vertical-middle"></i>Move to draft</a>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                 
                 </table>

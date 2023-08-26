@@ -39,7 +39,6 @@
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="{{ route('category.edit', $category->id) }}"><i class="mdi mdi-pencil me-2 text-muted font-18 vertical-middle"></i>Edit</a>
                                         <a class="dropdown-item" href="{{ route('category.destroy', $category->id) }}"><i class="mdi mdi-delete me-2 text-muted font-18 vertical-middle"></i>Remove</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-star me-2 font-18 text-muted vertical-middle"></i>Move to draft</a>
                                     </div>
                                 </div>
                             </td>

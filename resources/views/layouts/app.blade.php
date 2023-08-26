@@ -53,7 +53,7 @@
 
                         <!-- Start Content-->
                         <div class="container-fluid">                 
-                            <x-partials.page-title title="dashboard" />
+                            <x-partials.page-title title="Dashboard" />
                                 @yield('content')
                         </div> 
 
