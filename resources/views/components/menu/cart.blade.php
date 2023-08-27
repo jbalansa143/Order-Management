@@ -36,7 +36,7 @@
                                     @foreach($cart as $cartItem)
                                     <tr>
                                         <td>
-                                            <img width="80"  src="{{  asset('uploads/' . $cartItem->image) }}" 
+                                            <img width="75" class="rounded"  src="{{  asset('uploads/' . $cartItem->image) }}" 
                                                 title="contact-img" class="rounded me-3" height="48" />
                                             <p class="m-0 d-inline-block align-middle font-16">
                                                 <a href="ecommerce-product-detail.html" class="text-reset font-family-secondary">{{ $cartItem->menu }}</a>
@@ -105,12 +105,9 @@
                             <a href="{{ route('order.store') }}" class="btn btn-primary"><i class="mdi mdi-cart-plus me-1"></i> Checkout</a>
                             
                                     <a href="{{ route('customer.index') }}" class="btn text-muted d-none d-sm-inline-block btn-link fw-semibold">
-                                        <i class="mdi mdi-arrow-left"></i> Order more</a>
-                            
+                                        <i class="mdi mdi-arrow-left"></i>Go to Menu</a>   
                         </div>
-
                     </div> <!-- end col -->
-
                 </div> <!-- end row -->
             </div> <!-- end card-body-->
         </div> <!-- end card-->

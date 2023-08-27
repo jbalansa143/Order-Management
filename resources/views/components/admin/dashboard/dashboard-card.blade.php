@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-6">
                         <div class="text-end">
-                            <h3 class="text-dark my-1">$<span data-plugin="counterup">12,14</span></h3>
+                            <h3 class="text-dark my-1">₱<span data-plugin="counterup">12,14</span></h3>
                             <p class="text-muted mb-1 text-truncate">Income status</p>
                         </div>
                     </div>

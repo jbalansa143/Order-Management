@@ -19,11 +19,18 @@ class OrderController extends Controller
     public function store(Cart $cart, Request $request)
     {
         $cartItems = Cart::all();
-        $order_number = Str::random(5);
-        foreach($cartItems as $cartItem) {
+ 
+        $order_number = null;
 
+        // Loop until a unique order number is generated
+        do {
+            $order_number = Str::random(5);
+        } while (Order::where('order_number', $order_number)->exists());
+
+        foreach($cartItems as $cartItem) {
             $order = new Order;
             $order->menu = $cartItem->menu;
+            $order->menu_id = $cartItem->menu_id;
             $order->order_number = $order_number;
             $order->category = $cartItem->category;
             $order->quantity = $cartItem->quantity;
@@ -32,10 +39,9 @@ class OrderController extends Controller
             $order->is_completed = $cartItem->is_completed;
             $order->save();
         }
-        //deleting order after saving to database
+        //clear the cart database after saving to database
         $cart->truncate();
-        
-        return redirect()->route('order.complete');
+        return redirect()->route('order.complete')->with('orderNumber', $order_number);
     }
 
     /**

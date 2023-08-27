@@ -33,18 +33,7 @@
                             <input value="{{ old('price') }}" name="price" type="text" class="form-control" id="product-price" placeholder="Enter amount">
                         </div>
                      
-                        <div class="mb-3">
-                            <label class="mb-2">Status <span class="text-danger">*</span></label>
-                            <br/>
-                            <div class="radio form-check-inline">
-                                <input type="radio" id="inlineRadio1" value="1" name="status" checked="">
-                                <label for="inlineRadio1"> Available </label>
-                            </div>
-                            <div class="radio form-check-inline">
-                                <input type="radio" id="inlineRadio3" value="0" name="status">
-                                <label for="inlineRadio3"> Draft </label>
-                            </div>
-                        </div>
+                        
 
                         {{-- <div>
                             <label class="form-label">Comment</label>
@@ -64,7 +53,18 @@
                                 <label for="product-price">Image <span class="text-danger">*</span></label>
                                 <input value="{{ old('image') }}" name="image" type="file" class="form-control"  />
                             </div>
-
+                            <div class="mb-3">
+                                <label class="mb-2">Status <span class="text-danger">*</span></label>
+                                <br/>
+                                <div class="radio form-check-inline">
+                                    <input type="radio" id="inlineRadio1" value="1" name="status" checked="">
+                                    <label for="inlineRadio1"> Available </label>
+                                </div>
+                                <div class="radio form-check-inline">
+                                    <input type="radio" id="inlineRadio3" value="0" name="status">
+                                    <label for="inlineRadio3"> Draft </label>
+                                </div>
+                            </div>
                             <!-- Preview -->
                            
                         </div>

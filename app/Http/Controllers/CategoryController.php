@@ -68,6 +68,7 @@ class CategoryController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @param array
      */
     public function update(Request $request, Category $category)
     {

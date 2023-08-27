@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="4;url={{ route('customer.index') }}">
+    <meta http-equiv="refresh" content="10;url={{ route('customer.index') }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Order Complete</title>
     <link href="{{ asset('assets/images/rabbit-logo.png') }}" rel="icon" type="image/png">
@@ -30,6 +30,9 @@
             <img src="{{ asset('assets/images/rabbit-logo.png') }}" alt="Rabbit Logo" class="mx-auto w-50 h-50">
             <h1 class="mb-3 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Your Order Has Being</span> Served!</h1>
             <p class="mb-5 text-gray-600 mt-2">Please proceed to the cashier for payment</p>
+            <div class="order-number">
+                Your order code is: {{ session('orderNumber') }}
+            </div>
     </div>
 </body>
 </html>
