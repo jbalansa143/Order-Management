@@ -56,15 +56,15 @@
                                             <div class="col-lg-7">
                                                 <div class="ps-xl-3 mt-3 mt-xl-0">
                                                     <h4 class="mb-3">{{ $menu->getName() }}</h4>
-                                                    <p class="text-muted float-start me-3">
+                                                    {{-- <p class="text-muted float-start me-3">
                                                         <span class="mdi mdi-star text-warning"></span>
                                                         <span class="mdi mdi-star text-warning"></span>
                                                         <span class="mdi mdi-star text-warning"></span>
                                                         <span class="mdi mdi-star text-warning"></span>
                                                         <span class="mdi mdi-star"></span>
-                                                    </p>
-                                                    <p class="mb-4"><a href="" class="text-muted">( 36 Customer Reviews )</a></p>
-                                                    <h6 class="text-danger text-uppercase">20 % Off</h6>
+                                                    </p> --}}
+                                                    {{-- <p class="mb-4"><a href="" class="text-muted">( 36 Customer Reviews )</a></p>
+                                                    <h6 class="text-danger text-uppercase">20 % Off</h6> --}}
                                                     <h4 class="mb-4">Price : <b>₱{{ $menu->getPrice() }}</b></h4>
                                                     <h4><span class="badge bg-soft-success text-success mb-4">{{ $menu->getStatus() }}</span></h4>
                                                     <p class="text-muted mb-4">{{ $menu->description }}</p>
@@ -76,16 +76,9 @@
                                                         <label class="my-1 me-2" for="quantityinput">Quantity</label>
                                                         <div class="me-3">
                                                             <select name="qty" class="form-select my-1" id="quantityinput">
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                                <option value="6">6</option>
-                                                                <option value="7">7</option>
-                                                                <option value="8">8</option>
-                                                                <option value="9">9</option>
-                                                                <option value="10">10</option>
+                                                                @for($i = 1; $i <= 10; $i++)
+                                                                    <option value="{{ $i }}">{{ $i }}</option>
+                                                                @endfor
                                                             </select>
                                                         </div>
                                                     </div>

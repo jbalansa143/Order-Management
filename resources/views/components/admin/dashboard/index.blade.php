@@ -8,11 +8,11 @@
 
     <x-admin.dashboard.dashboard-card />
 
-    <x-admin.dashboard.dashboard-analytics />
+    {{-- <x-admin.dashboard.dashboard-analytics /> --}}
     
     <div class="row">
-        <x-admin.dashboard.card-map />
-        <x-admin.dashboard.card-table />
+        {{-- <x-admin.dashboard.card-map /> --}}
+        <x-admin.dashboard.card-table :menus="$menus" />
     </div>
           
 @endsection
