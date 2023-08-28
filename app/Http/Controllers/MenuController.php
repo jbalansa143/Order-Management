@@ -63,27 +63,20 @@ class MenuController extends Controller
         } else {
             $validatedData['image'] = null;
         }
-        // getting user input request and storing to database 
-        $menu = new Menu;
-        $menu->name = $validatedData['name'];
-        $menu->description = $validatedData['description'];
-        $menu->category = $validatedData['category'];
-        $menu->price = $validatedData['price'];
-        $menu->status = $validatedData['status'];
-        $menu->image = $validatedData['image'];
-        $menu->save();
+            // getting user input request and storing to database 
+            $menu = new Menu;
+            
+            $menu->name = $validatedData['name'];
+            $menu->description = $validatedData['description'];
+            $menu->category = $validatedData['category'];
+            $menu->price = $validatedData['price'];
+            $menu->status = $validatedData['status'];
+            $menu->image = $validatedData['image'];
+            $menu->save();
 
-    return redirect()->route('menu.index')->with('success', 'Item added successfully!');
+            return redirect()->route('menu.index')->with('success', 'Item added successfully!');
 }
 
-    /**
-     * Display the specified resource.
-     * @param int
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

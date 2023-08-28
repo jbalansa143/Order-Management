@@ -10,28 +10,36 @@ use Illuminate\Support\Str;
 class OrderController extends Controller
 {
     /**
-     * Store a newly created resource in storage.
-     * 
-     * @param array $cart
-     * @param array $request
-     * @return void
+     * Store a newly created order in the database.
+     *
+     * @param  \App\Models\Cart  $cart
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception If random_int() encounters an error generating a random number.
      */
     public function store(Cart $cart, Request $request)
     {
         $cartItems = Cart::all();
  
-        $order_number = null;
+        $orderNumber = null;
+        $min = 10000;
+        $max = 99999; 
 
         // Loop until a unique order number is generated
         do {
-            $order_number = Str::random(5);
-        } while (Order::where('order_number', $order_number)->exists());
+            try {
+                $orderNumber = random_int($min, $max);
+            } catch (\Exception $e) {
+                // Handle the exception if random_int() encounters an error
+                throw $e;
+            }
+        } while (Order::where('order_number', $orderNumber)->exists());
 
         foreach($cartItems as $cartItem) {
             $order = new Order;
             $order->menu = $cartItem->menu;
             $order->menu_id = $cartItem->menu_id;
-            $order->order_number = $order_number;
+            $order->order_number = $orderNumber;
             $order->category = $cartItem->category;
             $order->quantity = $cartItem->quantity;
             $order->price = $cartItem->price * $cartItem->quantity;;
@@ -41,15 +49,29 @@ class OrderController extends Controller
         }
         //clear the cart database after saving to database
         $cart->truncate();
-        return redirect()->route('order.complete')->with('orderNumber', $order_number);
+        return redirect()->route('order.complete')->with('orderNumber', $orderNumber);
     }
 
     /**
      * Display the complete view
+     * 
+     * @return \Illuminate\View\View
      */
     public function complete()
     {
         return view('components.menu.complete');
+    }
+    
+  /**
+   * Display the kitchen view with the list of orders
+   * 
+   * @return \Illuminate\View\View
+   */
+    public function viewOrders() {
+
+        $orders = Order::all();
+
+        return view('components.menu.kitchen', compact('orders'));
     }
 
 }
