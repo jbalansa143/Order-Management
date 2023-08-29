@@ -41,13 +41,13 @@
         <div class="flex flex-wrap gap-4 px-4 sm:px-6 md:px-8 lg:px-20 justify-center">
             @foreach($menus as $menu)
                 <a href="{{ route('menu.show', $menu->id) }}" class="card-link hover:shadow-lg swing-in-top-fwd w-full sm:w-1/2  md:w-1/3 lg:w-1/4">
-                    <div class="relative bg-white rounded-lg shadow-md flex flex-col">
-                        <img loading="eager" class="w-full h-48 object-cover rounded-t-lg" src="{{ asset('uploads/'.$menu->image) }}" alt="Category 1">
+                    <div class="relative bg-white rounded-lg shadow-md flex flex-col justify-center	items-center">
+                        <img loading="eager" class="object-contain object-center w-48 h-48 object-cover rounded-t-lg" src="{{ asset('uploads/'.$menu->image) }}" alt="Category 1">
                         <div class="p-4 flex-1">
                             <h2 class="text-xl font-semibold mb-2">{{ $menu->getName() }}</h2>
-                            <p class="text-gray-700">{{ $menu->getDescription() }}</p>
+                            {{-- <p class="text-gray-700">{{ $menu->getDescription() }}</p> --}}
                         </div>
-                        <h1 class="absolute bottom-4 right-4 text-lg ">{{ $menu->getPrice() }}</h1>
+                        <h1 class="mb-3 bottom-4 right-4 text-lg ">{{ $menu->getPrice() }}</h1>
                     </div>
                 </a>
             @endforeach
