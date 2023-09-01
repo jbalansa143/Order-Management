@@ -10,7 +10,7 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{  asset('assets/images/favicon.ico') }}">
 
-	    <!-- App css -->
+ 	    <!-- App css -->
 	    <link href="{{  asset('assets/css/config/material/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
 	    <link href="{{  asset('assets/css/config/material/app.min.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 

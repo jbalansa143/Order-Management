@@ -37,15 +37,17 @@ Route::prefix('category')->group(function() {
 });
 
 
-// Table Controller
-// Route::prefix('table')->group(function () {
-//     Route::get('/', 'App\Http\Controllers\TableController@index')->name('table.index');
-//     Route::get('create', 'App\Http\Controllers\TableController@create')->name('table.create');
-//     Route::post('store', 'App\Http\Controllers\TableController@store')->name('table.store');
-//     Route::get('edit/{table}', 'App\Http\Controllers\TableController@edit')->name('table.edit');
-//     Route::put('update/{table}', 'App\Http\Controllers\TableController@update')->name('table.update');
-//     Route::get('destroy/{table}', 'App\Http\Controllers\TableController@destroy')->name('table.destroy');
-// });
+
+/* Table controller
+Route::prefix('table')->group(function () {
+    Route::get('/', 'App\Http\Controllers\TableController@index')->name('table.index');
+    Route::get('create', 'App\Http\Controllers\TableController@create')->name('table.create');
+    Route::post('store', 'App\Http\Controllers\TableController@store')->name('table.store');
+    Route::get('edit/{table}', 'App\Http\Controllers\TableController@edit')->name('table.edit');
+    Route::put('update/{table}', 'App\Http\Controllers\TableController@update')->name('table.update');
+    Route::get('destroy/{table}', 'App\Http\Controllers\TableController@destroy')->name('table.destroy');
+});
+*/
 
 // Stocks Controller
 Route::prefix('stock')->group(function () {
@@ -72,11 +74,11 @@ Route::prefix('customer')->group(function () {
     Route::get('menus', 'App\Http\Controllers\CustomerController@index')->name('customer.index');
     Route::get('selectedCategory/{categoryId}', 'App\Http\Controllers\CustomerController@selectedCategory')->name('menu.selectedCategory');
     Route::get('menu/detail/{menu}', 'App\Http\Controllers\CartController@show')->name('menu.show');
-
-    Route::prefix('cart')->group(function() {
+ 
+    Route::prefix('menu/cart')->group(function() {
         Route::get('/', 'App\Http\Controllers\CartController@index')->name('cart.index');
         Route::post('store/{menu}', 'App\Http\Controllers\CartController@store')->name('cart.store');
-        Route::get('destroy/{cart}', 'App\Http\Controllers\CartController@destroy')->name('cart.destroy');
+        Route::get('destroy/{menuId}', 'App\Http\Controllers\CartController@destroy')->name('cart.destroy');
     });
 });
 

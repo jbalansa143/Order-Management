@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
+
 
 class OrderController extends Controller
 {
@@ -49,6 +51,8 @@ class OrderController extends Controller
         }
         //clear the cart database after saving to database
         $cart->truncate();
+
+        Session::forget('cart');
         return redirect()->route('order.complete')->with('orderNumber', $orderNumber);
     }
 

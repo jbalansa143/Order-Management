@@ -36,27 +36,27 @@
                                     @foreach($cart as $cartItem)
                                     <tr>
                                         <td>
-                                            <img width="75" class="rounded"  src="{{  asset('uploads/' . $cartItem->image) }}" 
+                                            <img width="48" style="object-fit: contain;"  src="{{  asset('uploads/' . $cartItem['image']) }}" 
                                                 title="contact-img" class="rounded me-3" height="48" />
                                             <p class="m-0 d-inline-block align-middle font-16">
-                                                <a href="ecommerce-product-detail.html" class="text-reset font-family-secondary">{{ $cartItem->menu }}</a>
+                                                <a href="{{ route('menu.show', $cartItem['menu_id']) }}" class="text-reset font-family-secondary">{{ $cartItem['menu'] }}</a>
                                                 <br>
-                                                <small class="me-2">{{ $cartItem->category }}</small>
+                                                <small class="me-2">{{ $cartItem['category'] }}</small>
                                                 <small><b>Color:</b> Light Green
                                                 </small>
                                             </p>
                                         </td>
                                         <td>
-                                            ₱ {{ $cartItem->price }}
+                                            ₱ {{ $cartItem['price'] }}
                                         </td>
                                         <td>
-                                            <input type="number" max="10" min="1" value="{{ $cartItem->quantity }}" class="form-control" placeholder="Qty" style="width: 90px;">
+                                            <input type="number" max="10" min="1" value="{{ $cartItem['quantity'] }}" class="form-control" placeholder="Qty" style="width: 90px;">
                                         </td>
                                         <td>
                                             ₱345
                                         </td>
                                         <td>
-                                            <a href="{{ route('cart.destroy', $cartItem->id) }}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                            <a href="{{ route('cart.destroy', $cartItem['menu_id']) }}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -120,7 +120,6 @@
 
 <!-- Vendor js -->
 <script src="{{  asset('assets/js/vendor.min.js') }}"></script>
-
 <!-- App js -->
 <script src="{{  asset('assets/js/app.min.js') }}"></script>
 
