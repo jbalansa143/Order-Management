@@ -85,6 +85,7 @@ Route::prefix('customer')->group(function () {
 
 //Order route 
 Route::prefix('order')->group(function() {
+    Route::get('/', 'App\Http\Controllers\OrderController@index')->name('order.index');
     Route::get('store', 'App\Http\Controllers\OrderController@store')->name('order.store');
     Route::get('complete', 'App\Http\Controllers\OrderController@complete')->name('order.complete');
 }); 

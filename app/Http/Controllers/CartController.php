@@ -55,7 +55,7 @@ class CartController extends Controller
         $cartSession[] = $cartItem;
         Session::put('cart', $cartSession);
     
-        return redirect()->route('cart.index');
+        return redirect()->route('cart.index')->with('success', 'Menu has been Added');
     }
 
     /**

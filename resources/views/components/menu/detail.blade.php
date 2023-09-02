@@ -19,7 +19,8 @@
 
 	    <!-- icons -->
 	    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-
+                    
+            </style>
     </head>
 
     <!-- body start -->
@@ -86,7 +87,7 @@
                                                     <div class="d-flex justify-around align-items-center">
                                                         <a href="{{ route('customer.index') }}" class="btn btn-outline-secondary me-2">Back</a>
                                                         <button type="submit" class="btn btn-success waves-effect waves-light">
-                                                            <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
+                                                            <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to Order
                                                         </button>
                                                     </div>
                                                 </form>

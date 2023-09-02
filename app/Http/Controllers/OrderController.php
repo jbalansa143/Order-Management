@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Session;
 class OrderController extends Controller
 {
     /**
+     * 
+     * @return \Illuminate\view\view
+     */
+    public function index()
+    {
+        
+        return view('components.orders.index');
+    }
+    /**
      * Store a newly created order in the database.
      *
      * @param  \App\Models\Cart  $cart
