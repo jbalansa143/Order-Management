@@ -28,19 +28,8 @@
 
         <!-- Begin page -->
         <div id="wrapper">
-           
                     <!-- Start Content-->
-                    <div class="container">
-                        
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <h4 class="page-title">Menu Detail</h4>
-                                </div>
-                            </div>
-                        </div>     
-                        <!-- end page title --> 
+                    <div class="container mt-5">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -56,16 +45,17 @@
                                             </div> <!-- end col -->
                                             <div class="col-lg-7">
                                                 <div class="ps-xl-3 mt-3 mt-xl-0">
-                                                    <h4 class="mb-3">{{ $menu->getName() }}</h4>
+                                                    <h1 class="mb-3">{{ $menu->getName() }}</h1>
                                                     {{-- <p class="text-muted float-start me-3">
                                                         <span class="mdi mdi-star text-warning"></span>
                                                         <span class="mdi mdi-star text-warning"></span>
                                                         <span class="mdi mdi-star text-warning"></span>
                                                         <span class="mdi mdi-star text-warning"></span>
                                                         <span class="mdi mdi-star"></span>
-                                                    </p> --}}
-                                                    {{-- <p class="mb-4"><a href="" class="text-muted">( 36 Customer Reviews )</a></p>
-                                                    <h6 class="text-danger text-uppercase">20 % Off</h6> --}}
+                                                    </p>
+                                                    <p class="mb-4"><a href="" class="text-muted">( 36 Customer Reviews )</a></p>
+                                                    <h6 class="text-danger text-uppercase">20 % Off</h6>
+                                                     --}}
                                                     <h4 class="mb-4">Price : <b>₱{{ $menu->getPrice() }}</b></h4>
                                                     <h4><span class="badge bg-soft-success text-success mb-4">{{ $menu->getStatus() }}</span></h4>
                                                     <p class="text-muted mb-4">{{ $menu->description }}</p>

@@ -38,7 +38,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="product-price">Phone<span class="text-danger">*</span></label>
-                    <input type="text" name="phone"  class="form-control"  placeholder="Enter manufacturer's name">
+                    <input type="text" maxlength="11" name="phone"  class="form-control"  placeholder="Enter manufacturer's name">
                 </div>
 
                 <div class="mb-3">
@@ -48,12 +48,12 @@
                 
                 <div class="mb-3">
                     <label for="product-price">Salary<span class="text-danger">*</span></label>
-                    <input type="text" name="salary" class="form-control"  placeholder="Enter manufacturer's name">
+                    <input type="text" maxlength="5" name="salary" class="form-control"  placeholder="Enter manufacturer's name">
                 </div>
                 
                 <div class="mb-3">
                     <label for="product-price">Emergency #</label>
-                    <input type="text" name="emergency_number"  class="form-control"  placeholder="Enter manufacturer's name">
+                    <input type="text" maxlength="11" name="emergency_number"  class="form-control"  placeholder="Enter manufacturer's name">
                 </div>
 
                 <div class="mb-3 col-md-4">
