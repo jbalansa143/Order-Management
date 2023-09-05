@@ -7,7 +7,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
-
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -80,11 +80,11 @@ class OrderController extends Controller
    * 
    * @return \Illuminate\View\View
    */
-    public function viewOrders() {
+    // public function viewOrders() {
 
-        $orders = Order::all();
-
-        return view('components.menu.kitchen', compact('orders'));
-    }
+    //     $orders = Order::all();
+    //     dd($orders);
+    //     return view('components.menu.kitchen', compact('orders'));
+    // }
 
 }

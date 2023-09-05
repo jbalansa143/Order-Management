@@ -13,7 +13,10 @@ class Orders extends Component
     {
         
         $orders = Order::all();
-        $this->groupedOrders = collect($orders)->groupBy('order_number');
+        $this->groupedOrders = collect($orders)
+        ->sortByDesc('created_at')
+        ->groupBy('order_number');
+    
 
     }
     

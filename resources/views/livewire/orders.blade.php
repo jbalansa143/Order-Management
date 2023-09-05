@@ -1,20 +1,32 @@
+@php use Carbon\Carbon; @endphp
 
-<div class="flex flex-wrap -mx-4 slide-in-bck-center ">
-    @foreach($groupedOrders as $orderNumber => $group)
-        <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-            <div class="bg-white rounded-lg shadow-lg">
-                <div class="p-4">
-                    <strong class="text-lg">Order: {{ $orderNumber }}</strong> <br>
-                    <ul class="mt-4">
-                        @foreach($group as $order)
-                            <li class="mb-2">
-                                {{ $order->menu }}  Qty: {{ $order->quantity }}<br>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
+<div class="container mx-auto">
+    <h1 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
+        Orders
+    </h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
+        @foreach($groupedOrders as $orderNumber => $group)
+        <div class="border p-4 rounded-lg bg-blue-200 flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-2">
+                <h2 class="text-xl font-semibold">Order #: {{ $orderNumber }}</h2>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Done</button>
             </div>
+            <!-- List of orders -->
+            <ul>
+            @foreach($group as $order)
+                @php
+                    $carbonTimestamp = Carbon::parse($order->created_at);
+                    $timeAgo = $carbonTimestamp->diffForHumans();
+                @endphp
+                <li class="mb-2">
+                    {{ $order->quantity }} {{ $order->menu }}
+                    <hr>
+                </li> 
+            @endforeach
+            </ul>
+            <span class="mt-5">{{ $timeAgo }}</span> 
         </div>
-    @endforeach
+        @endforeach
+    </div>
+    
 </div>
-
