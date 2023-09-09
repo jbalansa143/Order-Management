@@ -8,6 +8,7 @@ use App\Models\Order;
 class Orders extends Component
 {
     public $groupedOrders; 
+    public $text;
 
     public function mount()
     {

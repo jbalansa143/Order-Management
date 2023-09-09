@@ -6,18 +6,10 @@
 <!-- Start Content-->
 <div class="container">
 
-<!-- start page title -->
+
 <div class="row">
     <div class="col-12">
-        <div class="page-title-box">
-            <h4 class="page-title">My Cart</h4>
-        </div>
-    </div>
-</div>     
-<!-- end page title --> 
-<div class="row">
-    <div class="col-12">
-        <div class="card">
+        <div class="card mt-5">
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-8">
@@ -47,13 +39,14 @@
                                             </p>
                                         </td>
                                         <td>
-                                            ₱ {{ $cartItem['price'] }}
+                                            ₱{{ $cartItem['price'] }}
                                         </td>
                                         <td>
-                                            <input type="number" max="10" min="1" value="{{ $cartItem['quantity'] }}" class="form-control" placeholder="Qty" style="width: 90px;">
+                                            {{ $cartItem['quantity'] }}
+                                            {{-- <input type="number" max="10" min="1" value="{{ $cartItem['quantity'] }}" class="form-control" placeholder="Qty" style="width: 90px;"> --}}
                                         </td>
                                         <td>
-                                            ₱345
+                                            ₱{{ $cartItem['quantity'] * $cartItem['price'] }}
                                         </td>
                                         <td>
                                             <a href="{{ route('cart.destroy', $cartItem['menu_id']) }}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
@@ -75,7 +68,7 @@
                                     <tbody>
                                         <tr>
                                             <td>Grand Total :</td>
-                                            <td>$1571.19</td>
+                                            <td>₱1571.19</td>
                                         </tr>
                                         <tr>
                                             <td>Discount : </td>
