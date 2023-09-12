@@ -88,5 +88,6 @@ Route::prefix('order')->group(function() {
     Route::get('/', 'App\Http\Controllers\OrderController@index')->name('order.index');
     Route::get('store', 'App\Http\Controllers\OrderController@store')->name('order.store');
     Route::get('complete', 'App\Http\Controllers\OrderController@complete')->name('order.complete');
+    Route::get('/update/{orderId}', 'App\Http\Controllers\OrderController@update')->name('order.update');
 }); 
 

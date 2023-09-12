@@ -17,8 +17,15 @@ class OrderController extends Controller
      */
     public function index()
     {
+       
+        $orders = Order::all();
         
-        return view('components.orders.index');
+        $groupedOrders = collect($orders)
+        ->sortByDesc('created_at')
+        ->groupBy('order_number');
+        
+
+        return view('components.orders.index', compact('groupedOrders', 'orders'));
     }
     /**
      * Store a newly created order in the database.
@@ -80,11 +87,13 @@ class OrderController extends Controller
    * 
    * @return \Illuminate\View\View
    */
-    // public function viewOrders() {
+    public function update(Int $orderId) {
 
-    //     $orders = Order::all();
-    //     dd($orders);
-    //     return view('components.menu.kitchen', compact('orders'));
-    // }
+
+       $orders = Order::where('order_number', $orderId)
+       ->delete();
+
+        return redirect()->route('order.index');
+    }
 
 }

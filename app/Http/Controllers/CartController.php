@@ -84,7 +84,8 @@ class CartController extends Controller
         
         $cartSession = Session::get('cart', []);
         $menu = Menu::find($menuId);
-       
+        
+        $cart = Cart::where('menu_id', $menuId)->delete();
       
         $indexToDelete = -1;
         foreach ($cartSession as $index => $cartItem) {
@@ -104,7 +105,7 @@ class CartController extends Controller
             // Update the cart session
             Session::put('cart', $cartSession);
         }
-        $menu->delete();
+        
         return redirect()->route('cart.index');
     }
 }
