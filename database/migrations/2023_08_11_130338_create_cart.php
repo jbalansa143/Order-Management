@@ -19,7 +19,6 @@ return new class extends Migration
             $table->integer('quantity');
             $table->decimal('price', 8,2);
             $table->string('image');
-            $table->boolean('is_completed')->default(false);
             $table->timestamps();
         });
     }

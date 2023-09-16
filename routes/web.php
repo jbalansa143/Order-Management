@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CashierController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 // View Dashboard
 Route::get('/', 'App\Http\Controllers\DashboardController@index');
 
@@ -88,5 +90,13 @@ Route::prefix('order')->group(function() {
     Route::get('/', 'App\Http\Controllers\OrderController@index')->name('order.index');
     Route::get('store', 'App\Http\Controllers\OrderController@store')->name('order.store');
     Route::get('complete', 'App\Http\Controllers\OrderController@complete')->name('order.complete');
+<<<<<<< Updated upstream
+=======
+    Route::get('update/{orderId}', 'App\Http\Controllers\OrderController@update')->name('order.update');
+>>>>>>> Stashed changes
 }); 
 
+// cashier route
+Route::prefix('cashier')->group(function() {
+    Route::get('/', [CashierController::class, 'index'])->name('cashier.index');
+});

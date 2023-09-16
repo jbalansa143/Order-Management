@@ -16,6 +16,7 @@ class Order extends Model
         'quantity',
         'price',
         'image',
+        'status',
         'is_completed',
     ];
 }
