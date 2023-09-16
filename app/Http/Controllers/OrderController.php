@@ -17,8 +17,19 @@ class OrderController extends Controller
      */
     public function index()
     {
+<<<<<<< Updated upstream
         
         return view('components.orders.index');
+=======
+       
+        $orders = Order::where(['is_completed' => 0])->get();
+        
+        $groupedOrders = collect($orders)
+                        ->sortByDesc('created_at')
+                        ->groupBy('order_number'); 
+
+        return view('components.orders.index', compact('groupedOrders', 'orders'));
+>>>>>>> Stashed changes
     }
     /**
      * Store a newly created order in the database.
@@ -33,7 +44,7 @@ class OrderController extends Controller
         $cartItems = Cart::all();
  
         $orderNumber = null;
-        $min = 10000;
+        $min = 10;
         $max = 99999; 
 
         // Loop until a unique order number is generated
@@ -53,9 +64,10 @@ class OrderController extends Controller
             $order->order_number = $orderNumber;
             $order->category = $cartItem->category;
             $order->quantity = $cartItem->quantity;
-            $order->price = $cartItem->price * $cartItem->quantity;;
+            $order->price = $cartItem->price * $cartItem->quantity;
             $order->image = $cartItem->image;
-            $order->is_completed = $cartItem->is_completed;
+            $order->status = 0;
+            $order->is_completed = false;
             $order->save();
         }
         //clear the cart database after saving to database
@@ -82,9 +94,18 @@ class OrderController extends Controller
    */
     // public function viewOrders() {
 
+<<<<<<< Updated upstream
     //     $orders = Order::all();
     //     dd($orders);
     //     return view('components.menu.kitchen', compact('orders'));
     // }
 
 }
+=======
+       Order::where('order_number', $orderId)
+       ->update(['is_completed' => true]);
+
+        return redirect()->route('order.index')->with('success', 'Order completed');;
+    }
+}
+>>>>>>> Stashed changes

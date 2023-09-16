@@ -16,8 +16,14 @@ class CartController extends Controller
      */
     public function index()
     {
+        
         $cart = session()->get('cart', []);
-       return view('components.menu.cart', compact('cart'));
+
+        $totalCost = 0;
+        foreach($cart as $index => $data) {
+            $totalCost += $data['price'] * $data['quantity'];
+        }
+       return view('components.menu.cart', compact('cart', 'totalCost'));
     }
 
     /**
@@ -28,10 +34,8 @@ class CartController extends Controller
     public function store(Menu $menu, Request $request)
     {
         // Get Category name
-        foreach ($menu->getCategory() as $category) {
-            $category = $category->category;
-        }
-    
+        $category = $menu->getCategory()->pluck('category')->first();
+
         $cart = new Cart;
         $cart->menu_id = $menu->id;
         $cart->menu =  $menu->getName();
@@ -66,24 +70,23 @@ class CartController extends Controller
     {
         return view('components.menu.detail', compact('menu'));
     }
+
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage and session
      * 
-     * @param array
+     * @param int
+     * 
      */
-
-    // public function destroy(Cart $cart)
-    // {
-    //     dd(session('cart'));
-    //     $cart->delete();
-    //     return redirect()->route('cart.index')->with('danger', 'Item has been deleted!');
-    // }
-
     public function destroy($menuId)
     {
         $cartSession = Session::get('cart', []);
         
+<<<<<<< Updated upstream
       
+=======
+        $cart = Cart::where('menu_id', $menuId)->delete();
+        
+>>>>>>> Stashed changes
         $indexToDelete = -1;
         foreach ($cartSession as $index => $cartItem) {
             if ($cartItem['menu_id'] == $menuId) {
@@ -102,7 +105,13 @@ class CartController extends Controller
             // Update the cart session
             Session::put('cart', $cartSession);
         }
+<<<<<<< Updated upstream
     
+=======
+        
+        if(empty($cartSession)) return redirect()->route('customer.index');
+
+>>>>>>> Stashed changes
         return redirect()->route('cart.index');
     }
 }
