@@ -10,10 +10,6 @@
     @livewireStyles
 </head>
 <body>
-<<<<<<< Updated upstream
-    <livewire:orders />
-    @livewireScripts
-=======
     @php use Carbon\Carbon; @endphp
 <div class="container mx-auto">
     <h1 class="mx-5 mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
@@ -25,7 +21,7 @@
             <div class="flex items-center justify-between mb-2">
                 <h2 class="text-xl font-semibold">Order #: {{ $orderNumber }}</h2>
                 
-                <a href="{{ route('order.update', $orderNumber) }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Done</a>
+                <a href="{{ route('order.done', $orderNumber) }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Done</a>
             </div>
             <!-- List of orders -->
             <ul>
@@ -45,6 +41,5 @@
         @endforeach
     </div>  
 </div>
->>>>>>> Stashed changes
 </body>
 </html>

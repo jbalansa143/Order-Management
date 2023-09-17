@@ -9,20 +9,17 @@
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- plugin css -->
-        <link href="../assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css" />
        
-        {{-- bootstrap table --}}
-        <link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
-
         <!-- App css -->
-        <link href="../assets/css/config/material/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-        <link href="../assets/css/config/material/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+        <link href="{{ asset('assets/css/config/material/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+        <link href="{{ asset('assets/css/config/material/app.min.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
-        <link href="../assets/css/config/material/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-        <link href="../assets/css/config/material/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+        <link href="{{ asset('assets/css/config/material/bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
+        <link href="{{ asset('assets/css/config/material/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
 
         <!-- icons -->
-        <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -124,7 +121,7 @@
     
                         
             
-                        <li class="dropdown notification-list topbar-dropdown">
+                        {{-- <li class="dropdown notification-list topbar-dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <i class="fe-bell noti-icon"></i>
                                 <span class="badge bg-danger rounded-circle noti-icon-badge">9</span>
@@ -213,11 +210,11 @@
                                 </a>
     
                             </div>
-                        </li>
+                        </li> --}}
     
                         <li class="dropdown notification-list topbar-dropdown">
                             <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="../assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+                                {{-- <img src="../assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle"> --}}
                                 <span class="pro-user-name ms-1">
                                     Cashier <i class="mdi mdi-chevron-down"></i> 
                                 </span>
@@ -272,210 +269,75 @@
             </div>
             <!-- end Topbar -->
 
-            <!-- ============================================================== -->
-            <!-- Start Page Content here -->
-            <!-- ============================================================== -->
-
-            <div class="content-page">
-                <div class="content">
-
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-                        
-
-
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title">Orders</h4>
-                                        <p class="sub-header mb-0">
-                                            List of pending orders
-                                        </p>
-    
-                                        <table data-toggle="table" data-search="true" data-show-refresh="true" data-sort-name="id" data-page-list="[5, 10, 20]"
-                                            data-page-size="5" data-pagination="true" data-show-pagination-switch="true" class="table-borderless">
-                                            <thead class="table-light">
-                                                <tr>
-                                                    <th data-field="id" data-sortable="true" data-formatter="invoiceFormatter">Order ID</th>
-                                                    <th data-field="name" data-sortable="true">Name</th>
-                                                    <th data-field="date" data-sortable="true" data-formatter="dateFormatter">Order Date</th>
-                                                    <th data-field="amount" data-align="center" data-sortable="true" data-sorter="priceSorter">Price</th>
-                                                    <th data-field="status" data-align="center" data-sortable="true" data-formatter="statusFormatter">Status
-                                                    </th>
-                                        
-                                                </tr>
-                                            </thead>
-                                        
-                                        
-                                            <tbody>
-                                                <tr>
-                                                    <td>UB-1609</td>
-                                                    <td>Boudreaux</td>
-                                                    <td>22 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Unpaid</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>UB-1610</td>
-                                                    <td>Woldt</td>
-                                                    <td>24 Jun 2017</td>
-                                                    <td>$ 15.00</td>
-                                                    <td>Paid</td>
-                                                </tr>
-                                        
-                                                <tr>
-                                                    <td>UB-1611</td>
-                                                    <td>Leonardo</td>
-                                                    <td>25 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Shipped</td>
-                                                </tr>
-                                        
-                                                <tr>
-                                                    <td>UB-1612</td>
-                                                    <td>Halladay</td>
-                                                    <td>27 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Refunded</td>
-                                                </tr>
-                                        
-                                                <tr>
-                                                    <td>UB-1613</td>
-                                                    <td>Badgett</td>
-                                                    <td>28 Jun 2017</td>
-                                                    <td>$ 95.00</td>
-                                                    <td>Unpaid</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>UB-1614</td>
-                                                    <td>Boudreaux</td>
-                                                    <td>29 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Paid</td>
-                                                </tr>
-                                        
-                                                <tr>
-                                                    <td>UB-1615</td>
-                                                    <td>Boudreaux</td>
-                                                    <td>22 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Shipped</td>
-                                                </tr>
-                                        
-                                                <tr>
-                                                    <td>UB-1616</td>
-                                                    <td>Boudreaux</td>
-                                                    <td>22 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Refunded</td>
-                                                </tr>
-                                        
-                                                <tr>
-                                                    <td>UB-1617</td>
-                                                    <td>Boudreaux</td>
-                                                    <td>22 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Unpaid</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>UB-1618</td>
-                                                    <td>Boudreaux</td>
-                                                    <td>22 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Paid</td>
-                                                </tr>
-                                        
-                                                <tr>
-                                                    <td>UB-1619</td>
-                                                    <td>Boudreaux</td>
-                                                    <td>22 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Shipped</td>
-                                                </tr>
-                                        
-                                                <tr>
-                                                    <td>UB-1620</td>
-                                                    <td>Boudreaux</td>
-                                                    <td>22 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Refunded</td>
-                                                </tr>
-                                        
-                                                <tr>
-                                                    <td>UB-1621</td>
-                                                    <td>Boudreaux</td>
-                                                    <td>22 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Unpaid</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>UB-1622</td>
-                                                    <td>Boudreaux</td>
-                                                    <td>22 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Paid</td>
-                                                </tr>
-                                        
-                                                <tr>
-                                                    <td>UB-1623</td>
-                                                    <td>Boudreaux</td>
-                                                    <td>22 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Shipped</td>
-                                                </tr>
-                                        
-                                                <tr>
-                                                    <td>UB-1624</td>
-                                                    <td>Boudreaux</td>
-                                                    <td>22 Jun 2017</td>
-                                                    <td>$ 35.00</td>
-                                                    <td>Refunded</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div> <!-- end card-->
-                            </div> <!-- end col-->
+          
+            @php use Carbon\Carbon; @endphp
+            {{-- Container code here --}}
+            <div class="container mx-auto">
+                <h1 class="display-4 font-weight-bold text-dark">
+                    Orders
+                </h1>
+                <input type="text" class="form-control mb-3" id="searchInput" placeholder="Search for an order...">
+                <div class="card-deck" id="content-loaded">
+                    @foreach($groupedOrders as $orderNumber => $group)
+                    <div class="card">
+                        <div class="card-body">
+                         
+                            <h2 class="card-title h4 font-weight-bold">Order #: {{ $orderNumber }}</h2>
+                            <a href="{{ route('cashier.cancel', $orderNumber) }}" class="btn btn-sm btn-warning">Cancel</a>
+                            <a href="{{ route('order.paid', $orderNumber) }}" class="btn btn-sm btn-success">Checkout</a>
+                            <!-- List of orders -->
+                            <ul class="list-unstyled mt-3">
+                                @foreach($group as $order)
+                                    @php
+                                        $carbonTimestamp = Carbon::parse($order['created_at']);
+                                        $timeAgo = $carbonTimestamp->diffForHumans();
+                                    @endphp
+                                    <li class="mb-2">
+                                     {{ $order['quantity'] }} {{ $order['menu'] }} ₱{{ $order['price'] }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                            <hr>
+                            <b>Total cost:</b> ₱{{ $group->sum('price') }}
+                            <p class="mt-3">{{ $timeAgo }}</p>
                         </div>
-                        <!-- end row-->
-
-                           
-
-
-
-                        </div>
-                        <!-- end row -->         
-                        
-                    </div> <!-- container -->
-
-                </div> <!-- content -->       
-            </div>
-
-        </div>
-        <!-- END wrapper -->
+                    </div>
+                    @endforeach
+                </div>
+                
+            </div>   
 
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
-
+        
         <!-- Vendor js -->
-        <script src="../assets/js/vendor.min.js"></script>
-
-        {{-- Bootstrap table --}}
-        <script src="../assets/libs/bootstrap-table/bootstrap-table.min.js"></script>
-           <!-- Init js -->
-           <script src="../assets/js/pages/bootstrap-tables.init.js"></script>
-
-        <!-- Plugins js-->
-        <script src="../assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
-        <script src="../assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
-        <script src="../assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
-
+        <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
+        
         <!-- Dashboard 2 init -->
-        <script src="../assets/js/pages/dashboard-2.init.js"></script>
+        <script src="{{ asset('assets/js/pages/dashboard-2.init.js') }}"></script>
 
         <!-- App js -->
-        <script src="../assets/js/app.min.js"></script>
+        <script src="{{ asset('assets/js/app.min.js') }}"></script>
+         
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const searchInput = document.getElementById("searchInput");
+                const cards = document.querySelectorAll(".card");
         
+                searchInput.addEventListener("input", function () {
+                    const searchText = searchInput.value.trim().toLowerCase();
+        
+                    cards.forEach(function (card) {
+                        const cardTitle = card.querySelector(".card-title").textContent.toLowerCase();
+                        if (cardTitle.includes(searchText)) {
+                            card.style.display = "block";
+                        } else {
+                            card.style.display = "none";
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
-</html>
+    </html>
+   

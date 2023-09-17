@@ -21,7 +21,7 @@ class CartController extends Controller
 
         $totalCost = 0;
         foreach($cart as $index => $data) {
-            $totalCost += $data['price'] * $data['quantity'];
+            $totalCost += $data['price'];
         }
        return view('components.menu.cart', compact('cart', 'totalCost'));
     }
@@ -35,14 +35,13 @@ class CartController extends Controller
     {
         // Get Category name
         $category = $menu->getCategory()->pluck('category')->first();
-
         $cart = new Cart;
         $cart->menu_id = $menu->id;
         $cart->menu =  $menu->getName();
         $cart->category =  $category;
         $cart->image =  $menu->image;
         $cart->quantity = $request->qty;
-        $cart->price = $menu->getPrice();
+        $cart->price = $request->qty * $menu->getPrice();
         $cart->save();
     
         // Add cart item to session
@@ -64,10 +63,11 @@ class CartController extends Controller
 
     /**
      * Display the specified resource.
-     * @return array
+     * @return \Illuminate\View\View with passed array of $menu
      */
     public function show(Menu $menu)
     {
+
         return view('components.menu.detail', compact('menu'));
     }
 
@@ -80,13 +80,12 @@ class CartController extends Controller
     public function destroy($menuId)
     {
         $cartSession = Session::get('cart', []);
-        
-<<<<<<< Updated upstream
-      
-=======
-        $cart = Cart::where('menu_id', $menuId)->delete();
-        
->>>>>>> Stashed changes
+        try {
+            Cart::where(['menu_id' => $menuId])->delete();
+        } catch(Exeption $e) {
+            return redirect()->route('cart.index')->with('error', 'Contact staff for assistance');
+        }
+
         $indexToDelete = -1;
         foreach ($cartSession as $index => $cartItem) {
             if ($cartItem['menu_id'] == $menuId) {
@@ -94,24 +93,22 @@ class CartController extends Controller
                 break;
             }
         }
-    
+        
         // If the menu item was found, remove it from the cart session
         if ($indexToDelete !== -1) {
             unset($cartSession[$indexToDelete]);
-    
+            
             // Reset array keys to ensure the session remains contiguous
             $cartSession = array_values($cartSession);
-    
+            
             // Update the cart session
             Session::put('cart', $cartSession);
         }
-<<<<<<< Updated upstream
     
-=======
-        
+     
+    
         if(empty($cartSession)) return redirect()->route('customer.index');
 
->>>>>>> Stashed changes
         return redirect()->route('cart.index');
     }
 }
