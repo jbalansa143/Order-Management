@@ -276,7 +276,7 @@
                 <h1 class="display-4 font-weight-bold text-dark">
                     Orders
                 </h1>
-                <input type="text" class="form-control mb-3" id="searchInput" placeholder="Search for an order...">
+                <input type="text" class="form-control my-3" id="searchInput" placeholder="Search for an order...">
                 <div class="card-deck" id="content-loaded">
                     @foreach($groupedOrders as $orderNumber => $group)
                     <div class="card">
@@ -285,6 +285,7 @@
                             <h2 class="card-title h4 font-weight-bold">Order #: {{ $orderNumber }}</h2>
                             <a href="{{ route('cashier.cancel', $orderNumber) }}" class="btn btn-sm btn-warning">Cancel</a>
                             <a href="{{ route('order.paid', $orderNumber) }}" class="btn btn-sm btn-success">Checkout</a>
+                            
                             <!-- List of orders -->
                             <ul class="list-unstyled mt-3">
                                 @foreach($group as $order)

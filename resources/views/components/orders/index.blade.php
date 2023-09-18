@@ -11,10 +11,17 @@
 </head>
 <body>
     @php use Carbon\Carbon; @endphp
+<nav class="bg-gray-700 p-4 mb-3">
+    <div class="container mx-auto">
+        <h1 class="text-2xl font-bold text-white">Orders</h1>
+    </div>
+</nav>
 <div class="container mx-auto">
-    <h1 class="mx-5 mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
-        Orders
-    </h1>
+    @if(count($orders) < 1)
+    <div class="flex items-center justify-center w-full">
+        <h3 class="text-xl text-gray-700">There are no orders at the moment</h3>
+    </div>
+    @endif
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1" id="content-loaded">
         @foreach($groupedOrders as $orderNumber => $group)
         <div class="border p-4 rounded-lg bg-gray-200 flex flex-col justify-between">
