@@ -1,18 +1,6 @@
 @extends('layouts.cart')
 
 @section('content')
-<<<<<<< Updated upstream
-<!-- Begin page -->
-<div id="wrapper" class="bg-light">
-<!-- Start Content-->
-<div class="container">
-
-<!-- start page title -->
-<div class="row">
-    <div class="col-12">
-        <div class="page-title-box">
-            <h4 class="page-title">My Cart</h4>
-=======
 <div id="wrapper" class="bg-light">
     <div class="container">
         <div class="row">
@@ -49,7 +37,7 @@
                                                     {{-- <input x-model="qty" type="number" max="10" min="1" value="{{ $cartItem['quantity'] }}" class="form-control" placeholder="Qty" style="width: 90px;"> --}}
                                                 </td>
                                                 <td>
-                                                    ₱{{ $cartItem['quantity'] * $cartItem['price'] }}
+                                                    ₱{{ $cartItem['price'] }}
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('cart.destroy', $cartItem['menu_id']) }}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
@@ -108,7 +96,6 @@
                     </div> <!-- end card-body-->
                 </div> <!-- end card-->
             </div> <!-- end col -->
->>>>>>> Stashed changes
         </div>
     </div>
 </div>     

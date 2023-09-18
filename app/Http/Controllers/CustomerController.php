@@ -24,6 +24,7 @@ class CustomerController extends Controller
             'categories' => $categories,
             'cart_items_count' => $cart_items_count
         ]);
+        
     }
 
     public function selectedCategory(string $categoryId) {

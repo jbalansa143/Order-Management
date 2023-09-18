@@ -17,19 +17,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-<<<<<<< Updated upstream
-        
-        return view('components.orders.index');
-=======
        
-        $orders = Order::where(['is_completed' => 0])->get();
+        $orders = Order::where(['status' => 1])->where(['is_completed' => 0])->get();
         
         $groupedOrders = collect($orders)
                         ->sortByDesc('created_at')
                         ->groupBy('order_number'); 
 
         return view('components.orders.index', compact('groupedOrders', 'orders'));
->>>>>>> Stashed changes
     }
     /**
      * Store a newly created order in the database.
@@ -92,20 +87,20 @@ class OrderController extends Controller
    * 
    * @return \Illuminate\View\View
    */
-    // public function viewOrders() {
+    public function done($orderId) {
 
-<<<<<<< Updated upstream
-    //     $orders = Order::all();
-    //     dd($orders);
-    //     return view('components.menu.kitchen', compact('orders'));
-    // }
-
-}
-=======
        Order::where('order_number', $orderId)
        ->update(['is_completed' => true]);
 
-        return redirect()->route('order.index')->with('success', 'Order completed');;
+        return redirect()->route('order.index')->with('success', 'Order ready to be served');;
+    }
+
+    /**
+     * return \Illuminate\View\View
+     */
+    public function paid($orderId) {
+        Order::where('order_number', $orderId)->update(['status' => 1]);
+
+        return redirect()->route('cashier.index')->with('success', 'order '. $orderId . ' is now serving');
     }
 }
->>>>>>> Stashed changes

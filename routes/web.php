@@ -90,13 +90,12 @@ Route::prefix('order')->group(function() {
     Route::get('/', 'App\Http\Controllers\OrderController@index')->name('order.index');
     Route::get('store', 'App\Http\Controllers\OrderController@store')->name('order.store');
     Route::get('complete', 'App\Http\Controllers\OrderController@complete')->name('order.complete');
-<<<<<<< Updated upstream
-=======
-    Route::get('update/{orderId}', 'App\Http\Controllers\OrderController@update')->name('order.update');
->>>>>>> Stashed changes
+    Route::get('done/{orderId}', 'App\Http\Controllers\OrderController@done')->name('order.done');
+    Route::get('paid/{orderId}', 'App\Http\Controllers\OrderController@paid')->name('order.paid');
 }); 
 
 // cashier route
 Route::prefix('cashier')->group(function() {
     Route::get('/', [CashierController::class, 'index'])->name('cashier.index');
+    Route::get('cancel/{orderId}', [CashierController::class, 'cancel'])->name('cashier.cancel');
 });

@@ -14,17 +14,20 @@ class CashierController extends Controller
     public function index()
     {
         $orders = Order::where(['status' => 0])->get();
-        $grouped = collect($orders)->groupBy('order_number')->sortByDesc('created_at');
+        $groupedOrders = collect($orders)->groupBy('order_number')->sortBy('created_at');
         
-        return view('components.cashier.index', ['orders' => $orders, 'grouped' => $grouped]);
+        return view('components.cashier.index', compact('orders', 'groupedOrders')); 
     }
 
     /**
-     * Show the form for creating a new resource.
+     * cancel the order 
      */
-    public function create()
+    public function cancel($orderId)
     {
-        //
+        Order::where(['order_number' => $orderId])
+             ->update(['status' => 3]);
+
+        return redirect()->route('cashier.index')->with('warning', 'Order ' . $orderId . ' has been cancelled');
     }
 
     /**
