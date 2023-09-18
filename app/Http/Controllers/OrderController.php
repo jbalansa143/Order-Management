@@ -8,6 +8,7 @@ use App\Models\Order;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
+use App\Models\Transaction;
 
 class OrderController extends Controller
 {
@@ -99,8 +100,19 @@ class OrderController extends Controller
      * return \Illuminate\View\View
      */
     public function paid($orderId) {
-        Order::where('order_number', $orderId)->update(['status' => 1]);
+        $orders = Order::where('order_number', $orderId)->get();
+        foreach($orders as $order) {
 
+            $transaction = new Transaction;
+            $transaction->menu = $order->menu;
+            $transaction->order_id = $order->order_number;
+            $transaction->quantity = $order->quantity;
+            $transaction->amount = $order->price;
+            $transaction->transaction_date = $order->created_at;
+            $transaction->save();
+            
+        }
+        Order::where('order_number', $orderId)->update(['status' => 1]);
         return redirect()->route('cashier.index')->with('success', 'order '. $orderId . ' is now serving');
     }
 }

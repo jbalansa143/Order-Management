@@ -26,7 +26,6 @@ class CashierController extends Controller
     {
         Order::where(['order_number' => $orderId])
              ->update(['status' => 3]);
-
         return redirect()->route('cashier.index')->with('warning', 'Order ' . $orderId . ' has been cancelled');
     }
 
