@@ -19,11 +19,7 @@ class CartController extends Controller
         
         $cart = session()->get('cart', []);
 
-        $totalCost = 0;
-        foreach($cart as $index => $data) {
-            $totalCost += $data['price'];
-        }
-       return view('components.menu.cart', compact('cart', 'totalCost'));
+       return view('components.menu.cart', compact('cart'));
     }
 
     /**
@@ -35,13 +31,14 @@ class CartController extends Controller
     {
         // Get Category name
         $category = $menu->getCategory()->pluck('category')->first();
+
         $cart = new Cart;
         $cart->menu_id = $menu->id;
         $cart->menu =  $menu->getName();
         $cart->category =  $category;
         $cart->image =  $menu->image;
         $cart->quantity = $request->qty;
-        $cart->price = $request->qty * $menu->getPrice();
+        $cart->price = $menu->getPrice();
         $cart->save();
     
         // Add cart item to session
