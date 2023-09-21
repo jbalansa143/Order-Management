@@ -52,7 +52,7 @@ class OrderController extends Controller
                 throw $e;
             }
         } while (Order::where('order_number', $orderNumber)->exists());
-
+        
         foreach($cartItems as $cartItem) {
             $order = new Order;
             $order->menu = $cartItem->menu;
@@ -110,7 +110,7 @@ class OrderController extends Controller
             $transaction->amount = $order->price;
             $transaction->transaction_date = $order->created_at;
             $transaction->save();
-            
+
         }
         Order::where('order_number', $orderId)->update(['status' => 1]);
         return redirect()->route('cashier.index')->with('success', 'order '. $orderId . ' is now serving');

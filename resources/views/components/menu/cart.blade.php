@@ -14,6 +14,7 @@
                                         <thead class="table-light">
                                             <tr>
                                                 <th>Menu</th>
+                                                <th>Price</th>
                                                 <th>Quantity</th>
                                                 <th>Total</th>
                                                 <th style="width: 50px;"></th>
@@ -26,18 +27,21 @@
                                                     <img width="48" style="object-fit: contain;"  src="{{  asset('uploads/' . $cartItem['image']) }}" 
                                                         title="contact-img" class="rounded me-3" height="48" />
                                                     <p class="m-0 d-inline-block align-middle font-16">
-                                                        <a href="{{ route('menu.show', $cartItem['menu_id']) }}" class="text-reset font-family-secondary">{{ $cartItem['menu'] }}    <small>₱{{ $cartItem['price'] }}</small>   </a>
+                                                        <a href="{{ route('menu.show', $cartItem['menu_id']) }}" class="text-reset font-family-secondary">{{ $cartItem['menu'] }}</a>
                                                         <br>
                                                         <small class="me-2">{{ $cartItem['category'] }}</small>
                                                       
                                                     </p>
                                                 </td>
                                                 <td>
+                                                    ₱{{ $cartItem['price'] }}
+                                                </td>
+                                                <td>
                                                     {{ $cartItem['quantity'] }}
                                                     {{-- <input x-model="qty" type="number" max="10" min="1" value="{{ $cartItem['quantity'] }}" class="form-control" placeholder="Qty" style="width: 90px;"> --}}
                                                 </td>
                                                 <td>
-                                                    ₱{{ $cartItem['price'] }}
+                                                    ₱{{ $cartItem['price'] * $cartItem['quantity'] }}
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('cart.destroy', $cartItem['menu_id']) }}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
@@ -55,6 +59,12 @@
                                     <h4 class="header-title mb-3">Order Summary</h4>
 
                                     <div class="table-responsive">
+                                        @php
+                                            $totalCost = 0;
+                                            foreach($cart as $item) {
+                                                $totalCost += $item['price'] * $item['quantity']; 
+                                            }
+                                        @endphp
                                         <table class="table mb-0">
                                             <tbody>
                                                 <tr>

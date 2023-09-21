@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CashierController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +11,16 @@ use App\Http\Controllers\CashierController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CashierController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\StockController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 
 // View Dashboard
@@ -19,23 +28,23 @@ Route::get('/', 'App\Http\Controllers\DashboardController@index');
 
 
 //Menu Controllers
-Route::prefix('menu')->group(function() {
-    Route::get('/', 'App\Http\Controllers\MenuController@index')->name('menu.index');
-    Route::get('create', 'App\Http\Controllers\MenuController@create')->name('menu.create');
-    Route::post('store', 'App\Http\Controllers\MenuController@store')->name('menu.store');
-    Route::get('edit/{menu}', 'App\Http\Controllers\MenuController@edit')->name('menu.edit');
-    Route::put('update/{menu}', 'App\Http\Controllers\MenuController@update')->name('menu.update');
-    Route::get('destroy/{menu}', 'App\Http\Controllers\MenuController@destroy')->name('menu.destroy');
+Route::prefix('admin/menu')->group(function() {
+    Route::get('/',              [MenuController::class, 'index'])->name('menu.index');
+    Route::get('create',         [MenuController::class, 'create'])->name('menu.create');
+    Route::post('store',         [MenuController::class, 'store'])->name('menu.store');
+    Route::get('edit/{menu}',    [MenuController::class, 'edit'])->name('menu.edit');
+    Route::put('update/{menu}',  [MenuController::class, 'update'])->name('menu.update');
+    Route::get('destroy/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy');
 });
 
 // Category Controller - Menu
-Route::prefix('category')->group(function() {
-    Route::get('/', 'App\Http\Controllers\CategoryController@index')->name('category.index');
-    Route::get('create', 'App\Http\Controllers\CategoryController@create')->name('category.create');
-    Route::get('edit/{category}', 'App\Http\Controllers\CategoryController@edit')->name('category.edit');
-    Route::put('update/{category}', 'App\Http\Controllers\CategoryController@update')->name('category.update');
-    Route::post('store', 'App\Http\Controllers\CategoryController@store')->name('category.store');
-    Route::get('destroy/{category}', 'App\Http\Controllers\CategoryController@destroy')->name('category.destroy');
+Route::prefix('admin/category')->group(function() {
+    Route::get('/',                  [CategoryController::class, 'index'])->name('category.index');
+    Route::get('create',             [CategoryController::class, 'create'])->name('category.create');
+    Route::get('edit/{category}',    [CategoryController::class, 'edit'])->name('category.edit');
+    Route::put('update/{category}',  [CategoryController::class, 'update'])->name('category.update');
+    Route::post('store',             [CategoryController::class, 'store'])->name('category.store');
+    Route::get('destroy/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 });
 
 
@@ -51,51 +60,54 @@ Route::prefix('table')->group(function () {
 });
 */
 
-// Stocks Controller
-Route::prefix('stock')->group(function () {
-    Route::get('/', 'App\Http\Controllers\StockController@index')->name('stocks.index');
-    Route::get('create', 'App\Http\Controllers\StockController@create')->name('stocks.create');
-    Route::post('store', 'App\Http\Controllers\StockController@store')->name('stocks.store');
-    Route::get('edit/{stock}', 'App\Http\Controllers\StockController@edit')->name('stocks.edit');
-    Route::put('update/{stock}', 'App\Http\Controllers\StockController@update')->name('stocks.update');
-    Route::get('destroy/{stock}', 'App\Http\Controllers\StockController@destroy')->name('stocks.destroy');
+// Route Stocks Controller
+Route::prefix('admin/stock')->group(function () {
+    Route::get('/',               [StockController::class, 'index'])->name('stocks.index');
+    Route::get('create',          [StockController::class, 'create'])->name('stocks.create');
+    Route::post('store',          [StockController::class, 'store'])->name('stocks.store');
+    Route::get('edit/{stock}',    [StockController::class, 'edit'])->name('stocks.edit');
+    Route::put('update/{stock}',  [StockController::class, 'update'])->name('stocks.update');
+    Route::get('destroy/{stock}', [StockController::class, 'destroy'])->name('stocks.destroy');
 });
 
 //Staff Controller
-Route::prefix('staff')->group(function() {
-      Route::get('/', 'App\Http\Controllers\StaffController@index')->name('staff.index');
-      Route::get('create', 'App\Http\Controllers\StaffController@create')->name('staff.create');
-      Route::post('store', 'App\Http\Controllers\StaffController@store')->name('staff.store');
-      Route::get('edit/{staff}', 'App\Http\Controllers\StaffController@edit')->name('staff.edit');
-      Route::put('update/{staff}', 'App\Http\Controllers\StaffController@update')->name('staff.update');
-      Route::get('destroy/{staff}', 'App\Http\Controllers\StaffController@destroy')->name('staff.destroy');
+Route::prefix('admin/staff')->group(function() {
+      Route::get('/',               [StaffController::class, 'index'])->name('staff.index');
+      Route::get('create',          [StaffController::class, 'create'])->name('staff.create');
+      Route::post('store',          [StaffController::class, 'store'])->name('staff.store');
+      Route::get('edit/{staff}',    [StaffController::class, 'edit'])->name('staff.edit');
+      Route::put('update/{staff}',  [StaffController::class, 'update'])->name('staff.update');
+      Route::get('destroy/{staff}', [StaffController::class, 'destroy'])->name('staff.destroy');
 });
 
 // Customer menu and checkout routes
 Route::prefix('customer')->group(function () {
-    Route::get('menus', 'App\Http\Controllers\CustomerController@index')->name('customer.index');
-    Route::get('selectedCategory/{categoryId}', 'App\Http\Controllers\CustomerController@selectedCategory')->name('menu.selectedCategory');
-    Route::get('menu/detail/{menu}', 'App\Http\Controllers\CartController@show')->name('menu.show');
+    Route::get('menus',                         [CustomerController::class, 'index'])->name('customer.index');
+    Route::get('selectedCategory/{categoryId}', [CustomerController::class, 'index'])->name('menu.selectedCategory');
+    Route::get('menu/detail/{menu}',            [CartController::class, 'show'])->name('menu.show');
  
     Route::prefix('menu/cart')->group(function() {
-        Route::get('/', 'App\Http\Controllers\CartController@index')->name('cart.index');
-        Route::post('store/{menu}', 'App\Http\Controllers\CartController@store')->name('cart.store');
-        Route::get('destroy/{menuId}', 'App\Http\Controllers\CartController@destroy')->name('cart.destroy');
+        Route::get('/',                [CartController::class, 'index'])->name('cart.index');
+        Route::post('store/{menu}',    [CartController::class, 'store'])->name('cart.store');
+        Route::get('destroy/{menuId}', [CartController::class, 'destroy'])->name('cart.destroy');
     });
 });
 
 
 //Order route 
 Route::prefix('order')->group(function() {
-    Route::get('/', 'App\Http\Controllers\OrderController@index')->name('order.index');
-    Route::get('store', 'App\Http\Controllers\OrderController@store')->name('order.store');
-    Route::get('complete', 'App\Http\Controllers\OrderController@complete')->name('order.complete');
-    Route::get('done/{orderId}', 'App\Http\Controllers\OrderController@done')->name('order.done');
-    Route::get('paid/{orderId}', 'App\Http\Controllers\OrderController@paid')->name('order.paid');
+    Route::get('/',              [OrderController::class, 'index'])->name('order.index');
+    Route::get('store',          [OrderController::class, 'store'])->name('order.store');
+    Route::get('complete',       [OrderController::class, 'complete'])->name('order.complete');
+    Route::get('done/{orderId}', [OrderController::class, 'done'])->name('order.done');
+    Route::get('paid/{orderId}', [OrderController::class, 'paid'])->name('order.paid');
 }); 
 
 // cashier route
 Route::prefix('cashier')->group(function() {
-    Route::get('/', [CashierController::class, 'index'])->name('cashier.index');
+    Route::get('/',                [CashierController::class, 'index'])->name('cashier.index');
     Route::get('cancel/{orderId}', [CashierController::class, 'cancel'])->name('cashier.cancel');
 });
+
+// payments route
+Route::get('payments', [PaymentController::class, 'index'])->name('payment.index');

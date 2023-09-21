@@ -17,6 +17,12 @@
     </div>
 </nav>
 <div class="container mx-auto">
+    <div class="mb-4">
+        <input type="text" id="searchInput" placeholder="Search orders..."
+            class="w-full py-2 px-3 rounded-md shadow-md focus:outline-none focus:ring focus:border-blue-300">
+    </div>
+    
+    
     @if(count($orders) < 1)
     <div class="flex items-center justify-center w-full">
         <h3 class="text-xl text-gray-700">There are no orders at the moment</h3>
@@ -48,5 +54,30 @@
         @endforeach
     </div>  
 </div>
+<script>
+    // Get a reference to the search input field
+    const searchInput = document.getElementById('searchInput');
+
+    // Get all order containers
+    const orderContainers = document.querySelectorAll('.border');
+
+    // Attach an event listener to the search input
+    searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+
+        // Loop through each order container
+        orderContainers.forEach((container) => {
+            const orderText = container.textContent.toLowerCase();
+
+            // Check if the order text contains the search term
+            if (orderText.includes(searchTerm)) {
+                container.style.display = 'block'; // Show the container
+            } else {
+                container.style.display = 'none'; // Hide the container
+            }
+        });
+    });
+</script>
+
 </body>
 </html>

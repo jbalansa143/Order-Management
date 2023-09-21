@@ -72,7 +72,7 @@ class MenuController extends Controller
             $menu->price = $validatedData['price'];
             $menu->status = $validatedData['status'];
             $menu->image = $validatedData['image'];
-            $menu->save();
+            $menu->save();   
 
             return redirect()->route('menu.index')->with('success', 'Item added successfully!');
 }
