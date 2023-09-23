@@ -12,8 +12,19 @@ class ReportController extends Controller
      * Display a listing of order history
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function ordersReport()
     {
+        $transactions = Transaction::all();
+
+        
+
+        $approvedOrders = Order::where('status', 'approved')->count();
+        $cancelledOrders = Order::where('status', 'cancelled')->count();
+        return view('components.admin.reports.order-history', compact('transactions', 'approvedOrders', 'cancelledOrders'));
+    }
+
+    public function salesReport() {
+        
         $transactions = Transaction::all();
 
         // group transaction by month
@@ -27,9 +38,7 @@ class ReportController extends Controller
 
             return $transaction->sum('amount');
         });
-
-        $approvedOrders = Order::where('status', 'approved')->count();
-        $cancelledOrders = Order::where('status', 'cancelled')->count();
-        return view('components.admin.reports.index', compact('transactions', 'approvedOrders', 'cancelledOrders'));
+        
+        return view('components.admin.reports.sales-reports', compact('monthlySums', 'transactionByMonth'));
     }
 }

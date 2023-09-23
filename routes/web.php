@@ -50,8 +50,8 @@ Route::prefix('admin/category')->group(function() {
 // payments route
 Route::prefix('admin/reports')->group(function() {
 
-    Route::get('orders', [ReportController::class, 'index'])->name('reports.orders.index');
-    // Route::get('sales', [PaymentController::class, 'index'])->name('reports.sales.index');
+    Route::get('orders', [ReportController::class, 'ordersReport'])->name('reports.orders');
+    Route::get('sales', [ReportController::class, 'salesReport'])->name('reports.sales');
 });
 
 /* Table controller

@@ -89,10 +89,10 @@
                     <div class="collapse" id="payments">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('reports.orders.index') }}">Order History</a>
+                                <a href="{{ route('reports.orders') }}">Order History</a>
                             </li>
                             <li>
-                                <a href="#">Monthly Sales</a>
+                                <a href="{{ route('reports.sales') }}">Monthly Sales</a>
                             </li>
                         </ul>
                     </div>
