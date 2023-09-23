@@ -19,7 +19,7 @@ class OrderController extends Controller
     public function index()
     {
        
-        $orders = Order::where(['status' => 1])->where(['is_completed' => 0])->get();
+        $orders = Order::where(['status' => 'approved'])->where(['is_completed' => false])->get();
         
         $groupedOrders = collect($orders)
                         ->sortByDesc('created_at')
@@ -38,7 +38,7 @@ class OrderController extends Controller
     public function store(Cart $cart, Request $request)
     {
         $cartItems = Cart::all();
- 
+
         $orderNumber = null;
         $min = 10;
         $max = 99999; 
@@ -55,15 +55,16 @@ class OrderController extends Controller
         
         foreach($cartItems as $cartItem) {
             $order = new Order;
-            $order->menu = $cartItem->menu;
-            $order->menu_id = $cartItem->menu_id;
-            $order->order_number = $orderNumber;
-            $order->category = $cartItem->category;
-            $order->quantity = $cartItem->quantity;
-            $order->price = $cartItem->price * $cartItem->quantity;
-            $order->image = $cartItem->image;
-            $order->status = 0;
-            $order->is_completed = false;
+            $order->menu          =  $cartItem->menu;
+            $order->menu_id       =  $cartItem->menu_id;
+            $order->order_number  =  $orderNumber;
+            $order->category      =  $cartItem->category;
+            $order->quantity      =  $cartItem->quantity;
+            $order->price         =  $cartItem->price * $cartItem->quantity;
+            $order->image         =  $cartItem->image;
+            $order->status        =  'pending';
+            $order->is_completed  =  false;
+
             $order->save();
         }
         //clear the cart database after saving to database
@@ -90,29 +91,44 @@ class OrderController extends Controller
    */
     public function done($orderId) {
 
-       Order::where('order_number', $orderId)
-       ->update(['is_completed' => true]);
+    try {
+        Order::where('order_number', $orderId)
+        ->update(['is_completed' => true]);
 
         return redirect()->route('order.index')->with('success', 'Order ready to be served');;
+    } catch(\Exeption $e) {
+
+        return redirect()->route('order.index')->with('error', $e);
+        }
     }
 
     /**
-     * return \Illuminate\View\View
+     * Process payment for one or more orders.
+     *
+     * @param int|array $orderIds The order ID(s) to process payment for.
+     *
+     * @return \Illuminate\Http\RedirectResponse Redirects to the cashier index with success or error message.
      */
     public function paid($orderId) {
-        $orders = Order::where('order_number', $orderId)->get();
-        foreach($orders as $order) {
 
-            $transaction = new Transaction;
-            $transaction->menu = $order->menu;
-            $transaction->order_id = $order->order_number;
-            $transaction->quantity = $order->quantity;
-            $transaction->amount = $order->price;
-            $transaction->transaction_date = $order->created_at;
-            $transaction->save();
+        try {
 
+            $orders = Order::where('order_number', $orderId)->get();
+            $groupedOrders = collect($orders)->groupBy('order_number')->sortBy('created_at');
+
+            $total = Order::where('order_number', $orderId)->sum('price');
+       
+            
+            Transaction::create([
+                'order_id'   =>   $orderId,
+                'amount'     =>   $total,
+            ]);
+            
+            Order::where('order_number', $orderId)->update(['status' => 'approved']);
+            return redirect()->route('cashier.index')->with('success', 'order '. $orderId . ' is now serving');
+        } catch(\Exception $e) {
+
+            return redirect()->route('cashier.index')->with('error', 'An error has occurred. Please try your request again.');
         }
-        Order::where('order_number', $orderId)->update(['status' => 1]);
-        return redirect()->route('cashier.index')->with('success', 'order '. $orderId . ' is now serving');
     }
 }

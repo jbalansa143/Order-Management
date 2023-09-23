@@ -13,7 +13,7 @@
 */
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CashierController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\StockController;
@@ -47,7 +47,12 @@ Route::prefix('admin/category')->group(function() {
     Route::get('destroy/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 });
 
+// payments route
+Route::prefix('admin/reports')->group(function() {
 
+    Route::get('orders', [ReportController::class, 'ordersReport'])->name('reports.orders');
+    Route::get('sales', [ReportController::class, 'salesReport'])->name('reports.sales');
+});
 
 /* Table controller
 Route::prefix('table')->group(function () {
@@ -81,8 +86,8 @@ Route::prefix('admin/staff')->group(function() {
 });
 
 // Customer menu and checkout routes
-Route::prefix('customer')->group(function () {
-    Route::get('menus',                         [CustomerController::class, 'index'])->name('customer.index');
+Route::prefix('menus')->group(function () {
+    Route::get('/',                             [CustomerController::class, 'index'])->name('customer.index');
     Route::get('selectedCategory/{categoryId}', [CustomerController::class, 'index'])->name('menu.selectedCategory');
     Route::get('menu/detail/{menu}',            [CartController::class, 'show'])->name('menu.show');
  
@@ -108,6 +113,3 @@ Route::prefix('cashier')->group(function() {
     Route::get('/',                [CashierController::class, 'index'])->name('cashier.index');
     Route::get('cancel/{orderId}', [CashierController::class, 'cancel'])->name('cashier.cancel');
 });
-
-// payments route
-Route::get('payments', [PaymentController::class, 'index'])->name('payment.index');

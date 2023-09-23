@@ -80,14 +80,23 @@
                         <span> Tables </span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="#">
-                        <i class="mdi mdi-credit-card-outline"></i>
-                        <span> Payments </span>
+                    <a href="#payments" data-bs-toggle="collapse">
+                        <i class="fas fa-chart-bar"></i>
+                        <span> Reports </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="payments">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('reports.orders') }}">Order History</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('reports.sales') }}">Monthly Sales</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
-
                 <li>
                     <a href="{{ route('stocks.index') }}">
                         <i class="mdi mdi-dropbox"></i>
@@ -105,7 +114,7 @@
                 <li>
                     <a href="#">
                         <i class="fas fa-chart-bar"></i>
-                        <span> Reports </span>
+                        <span> Payments </span>
                     </a>
                 </li>
 
