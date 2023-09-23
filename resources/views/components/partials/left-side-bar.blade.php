@@ -82,7 +82,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{ route('payment.index') }}">
                         <i class="mdi mdi-credit-card-outline"></i>
                         <span> Payments </span>
                     </a>
