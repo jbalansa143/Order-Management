@@ -277,6 +277,13 @@
                     Orders
                 </h1>
                 <input type="text" class="form-control my-3" id="searchInput" placeholder="Search for an order...">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        @if(count($orders) < 1)
+                            <h3 class="text-muted">There are no orders at the moment</h3>
+                        @endif
+                    </div>
+                </div>
                 <div class="card-deck" id="content-loaded">
                     @foreach($groupedOrders as $orderNumber => $group)
                     <div class="card">

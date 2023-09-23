@@ -19,7 +19,7 @@ class OrderController extends Controller
     public function index()
     {
        
-        $orders = Order::where(['status' => 1])->where(['is_completed' => 0])->get();
+        $orders = Order::where(['status' => 'approved'])->where(['is_completed' => false])->get();
         
         $groupedOrders = collect($orders)
                         ->sortByDesc('created_at')
@@ -62,7 +62,7 @@ class OrderController extends Controller
             $order->quantity      =  $cartItem->quantity;
             $order->price         =  $cartItem->price * $cartItem->quantity;
             $order->image         =  $cartItem->image;
-            $order->status        =  0;
+            $order->status        =  'pending';
             $order->is_completed  =  false;
 
             $order->save();
@@ -91,10 +91,15 @@ class OrderController extends Controller
    */
     public function done($orderId) {
 
-       Order::where('order_number', $orderId)
-       ->update(['is_completed' => true]);
+    try {
+        Order::where('order_number', $orderId)
+        ->update(['is_completed' => true]);
 
         return redirect()->route('order.index')->with('success', 'Order ready to be served');;
+    } catch(\Exeption $e) {
+
+        return redirect()->route('order.index')->with('error', $e);
+        }
     }
 
     /**
@@ -112,13 +117,14 @@ class OrderController extends Controller
             $groupedOrders = collect($orders)->groupBy('order_number')->sortBy('created_at');
 
             $total = Order::where('order_number', $orderId)->sum('price');
-        
+       
+            
             Transaction::create([
                 'order_id'   =>   $orderId,
-                'amount'     =>   $total
+                'amount'     =>   $total,
             ]);
             
-            Order::where('order_number', $orderId)->update(['status' => 1]);
+            Order::where('order_number', $orderId)->update(['status' => 'approved']);
             return redirect()->route('cashier.index')->with('success', 'order '. $orderId . ' is now serving');
         } catch(\Exception $e) {
 

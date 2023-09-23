@@ -13,7 +13,7 @@
 */
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CashierController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\StockController;
@@ -47,7 +47,12 @@ Route::prefix('admin/category')->group(function() {
     Route::get('destroy/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 });
 
+// payments route
+Route::prefix('admin/reports')->group(function() {
 
+    Route::get('orders', [ReportController::class, 'index'])->name('reports.orders.index');
+    // Route::get('sales', [PaymentController::class, 'index'])->name('reports.sales.index');
+});
 
 /* Table controller
 Route::prefix('table')->group(function () {
@@ -108,6 +113,3 @@ Route::prefix('cashier')->group(function() {
     Route::get('/',                [CashierController::class, 'index'])->name('cashier.index');
     Route::get('cancel/{orderId}', [CashierController::class, 'cancel'])->name('cashier.cancel');
 });
-
-// payments route
-Route::get('payments', [PaymentController::class, 'index'])->name('payment.index');

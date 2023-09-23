@@ -52,8 +52,8 @@
                     </div>
                     <div class="col-6">
                         <div class="text-end">
-                            <h3 class="text-dark mt-1"><span data-plugin="counterup">12334</span></h3>
-                            <p class="text-muted mb-1 text-truncate">Success</p>
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ $approvedOrders }}</span></h3>
+                            <p class="text-muted mb-1 text-truncate">Approved</p>
                         </div>
                     </div>
                 </div> <!-- end row-->
@@ -71,7 +71,7 @@
                     </div>
                     <div class="col-6">
                         <div class="text-end">
-                            <h3 class="mt-1"><span data-plugin="counterup">6432</span></h3>
+                            <h3 class="mt-1"><span data-plugin="counterup">{{ $cancelledOrders }}</span></h3>
                             <p class="text-muted mb-1 text-truncate">Cancelled</p>
                         </div>
                     </div>
@@ -94,6 +94,7 @@
                             <th>Order ID #</th>
                             <th>Amount</th>
                             <th>Date</th>
+                            {{-- <th>Status</th> --}}
                             {{-- <th class="hidden-sm">Action</th> --}}
                         </tr>
                         </thead>
@@ -101,10 +102,10 @@
                             @foreach($transactions as $transaction)
                             <tr>
                                 <td>{{ $transaction->order_id }}</td>
-                                <td>{{ $transaction->amount }}</td>
+                                <td>₱{{ $transaction->amount }}</td>
                                 <td>{{ $transaction->created_at }}</td>
                                 {{-- <td>
-                                    <span class="badge bg-success">{{ $stock->getCost() }}</span>
+                                    <span class="badge bg-success">{{ $transaction->status }}</span>
                                 </td> --}}
                                 {{-- <td>
                                     <div class="btn-group dropdown">
